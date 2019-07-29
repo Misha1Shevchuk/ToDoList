@@ -1,0 +1,101 @@
+<html lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDoList</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/pageBehavior.js"></script>
+    <script src="js/API.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>ToDoList</h1>
+        <form action="/" method="post" id="search-form">
+            <input type="search" id="search" name="search" placeholder="Пошук">
+        </form>
+    </header>
+    <div class="wrapper">
+        <div class="menu">
+            <div class="menu-item" id="item-project">
+                <div class="menu-item-head" onclick="changeVisibility('form-add-divlabel');">
+                    <h4>Проекти</h4>
+                    <b class="menu-button-add" id="add-project"> + </b>
+                </div>
+                <div class="form-add-div" id="form-add-divlabel">
+                    <ul class="menu-list" id="ul-projects-list">
+                        <!-- <li>Проект1</li>
+                        <li>Проект2</li> -->
+                    </ul>
+                    <div class="menu-item-headbutton" onclick="changeVisibility('form-send-project');"><b>Новий проект</b></div>
+                    <form name="form-send-project" id="form-send-project">
+                        <input type="text" class="form-add-input" id="new-project" name="newproject" maxlength="50"><br>
+                        <input type="submit" class="red-button-accept form-add-buttons" id="send-project" name="send-project" value="Додати">
+                        <input type="reset" id="reset-project" class="button-cancel form-add-buttons" value="Скасувати" onclick="changeVisibility('form-send-project');">
+                    </form>
+                </div>
+            </div>
+            <div class="menu-item" id="item-label">
+                <div class="menu-item-head" onclick="changeVisibility('form-add-divproject');">
+                    <h4 onclick="changeVisibility('form-add-divlabel');">Мітки</h4>
+                    <b class="menu-button-add" id="add-label"> + </b>
+                </div>
+                <div class="form-add-div" id="form-add-divproject">
+                    <ul class="menu-list" id="ul-labels-list">
+                        <!-- <li>Мітка1</li>
+                        <li>Мітка2</li> -->
+                    </ul>
+                    <div class="menu-item-headbutton" onclick="changeVisibility('form-send-label');"><b>Нова мітка</b></div>
+                    <form name="form-send-label" id="form-send-label">
+                        <input type="text" class="form-add-input" id="new-label" name="newlabel" maxlength="50"><br>
+                        <input type="submit" class="red-button-accept form-add-buttons" id="send-label" name="send-label" value="Додати">
+                        <input type="reset" id="reset-label" class="button-cancel form-add-buttons" value="Скасувати" onclick="changeVisibility('form-send-label');">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="work-space">
+                <div class="add-task">
+                    <h3>Додати завдання</h3>
+                    <form name="form-send-task">
+                        <input type="text" id="new-task" name="newtask" tabindex="1" maxlength="250"><br>
+                        <input type="submit" class="red-button-accept" id="send-task" name="send-task" value="Додати завдання">
+                        <input type="reset" class="button-cancel" value="Скасувати">
+                    </form>
+                </div>
+                <div class="unfinished-tasks" id="unfinished-tasks-div">
+                    <h3>Незавершені завдання</h3>
+                    <ul id="ul-unfinished-tasks">
+                        <!-- <li>
+                            <input type="checkbox" class="check" id="status">
+                            <span class="task">Завдання1</span>
+                            <button class="workspace-change-button">🖉</button>
+                            <button class="workspace-delete-button">⮾</button>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="label-tasks">
+                    <div id="label1">
+                        <span>Мітка 1</span>
+                    </div>
+                    <div id="label2">
+                        <span>Мітка 2</span>
+                    </div>
+                </div>
+                <div class="finished-tasks">
+                    <h3>Виконані завдання</h3>
+                    <ul id="ul-finished-tasks">
+                        <!-- <li><b class="workspace-change-button"> ✓ </b><span>Завдання3</span></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
