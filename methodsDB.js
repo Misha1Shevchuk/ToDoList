@@ -53,6 +53,7 @@ module.exports.getLabels = function(res) {
     });
 }
 
+// Update task status
 module.exports.updateTaskIsCompleted = function(obj) {
     var post = [obj.is_completed, obj.id_task];
     var query = connection.query('UPDATE task SET is_completed = ? WHERE id_task = ?', post, function(err, result) {});

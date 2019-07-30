@@ -19,6 +19,7 @@ header {
     background-color: rgb(219, 76, 63);
     color: #fff;
     user-select: none;
+    z-index: 9;
 }
 
 #search-form {
@@ -112,6 +113,7 @@ li {
     max-height: 300px;
     margin-bottom: 5px;
     border-bottom: 1px solid #e2e1e1;
+    /* overflow-x: hidden; */
 }
 
 ::-webkit-scrollbar {
@@ -134,6 +136,7 @@ li {
 }
 
 .menu-list>li {
+    position: relative;
     font-size: 1.1em;
     padding: 5px;
     margin-bottom: 5px;
@@ -143,10 +146,6 @@ li {
 .menu-list>li:hover {
     background-color: white;
     cursor: pointer;
-}
-
-.menu-list>li:target {
-    background-color: #29662e;
 }
 
 .menu-button-add {
@@ -182,19 +181,6 @@ li {
     width: 180px;
     font-size: 1em;
     margin: 3px;
-    /* border-bottom: 1px solid #e2e1e1; */
-}
-
-.three-points-button {
-    float: right;
-    font-size: 1.5em;
-    color: gray;
-    user-select: none;
-}
-
-.three-points-button:hover {
-    color: black;
-    cursor: pointer;
 }
 
 
@@ -296,16 +282,53 @@ li {
     text-decoration: underline;
 }
 
-.workspace-change-button,
-.workspace-delete-button {
-    margin-left: 5px;
+.three-points-button {
+    float: right;
+    font-size: 1.5em;
+    color: gray;
+    user-select: none;
+}
+
+.three-points-button:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.buttons-block {
+    display: none;
+    position: absolute;
+    width: max-content;
+    top: 0;
+    right: -100;
+    text-align: center;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 8;
+}
+
+.show {
+    display: block;
+}
+
+.item-change-button,
+.item-delete-button {
+    margin: 5px;
     padding: 5px;
     font-size: 1.3em;
-    border: none;
     color: rgb(75, 75, 75);
-    outline: none;
     cursor: pointer;
     user-select: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.item-change-button:hover,
+.item-delete-button:hover {
+    color: rgb(136, 128, 128);
 }
 
 .check {
@@ -313,6 +336,13 @@ li {
     border: none;
     color: red;
     cursor: pointer;
+}
+
+#ul-unfinished-tasks>li,
+#ul-finished-tasks>li {
+    position: relative;
+    width: 60%;
+    display: block;
 }
 
 span.task {

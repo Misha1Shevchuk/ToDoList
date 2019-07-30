@@ -2,40 +2,11 @@ getListTasksFromServer();
 getListProjectsFromServer();
 getListLabelsFromServer();
 
-function getListTasksFromServer() {
-    var request = new XMLHttpRequest();
-    request.open('GET', "/tasksList");
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-        var data = request.response;
-        displayListTasks(data);
-    }
-}
-
-function getListProjectsFromServer() {
-    var request = new XMLHttpRequest();
-    request.open('GET', "/projectsList");
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-        var data = request.response;
-        displayListProjects(data);
-    }
-}
-
-function getListLabelsFromServer() {
-    var request = new XMLHttpRequest();
-    request.open('GET', "/labelsList");
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-        var data = request.response;
-        displayListLabels(data);
-    }
-}
-
 window.onload = function() {
+    // Page Behaviour
+    document.body.onclick = function(event) {
+        pageBehaviorFunc(event);
+    }
 
     // Send form "New Task"
     document.getElementById("send-task").onclick = function(e) {
@@ -99,65 +70,56 @@ window.onload = function() {
             request.send(label);
         }
     }
-
-    // Page Behaviour
-
-    document.body.onclick = function(event) {
-        t = event.target || event.srcElement;
-
-        // If task checkbox clicked 
-        if (t.id.includes("checkbox-number-")) {
-            toggleTaskCheckbox(t.id);
-        }
-        if (t.id.includes("remove-task-button-")) {
-            removeTask(t.id);
-        }
-    }
-
 }
 
-function displayListTasks(data) {
-    for (const id in data) {
-        // Check that there is no record on the page
-        if (!document.getElementById('task-id-' + data[id].id_task)) {
-            let newLi = document.createElement('li');
-            newLi.setAttribute('id', 'task-id-' + data[id].id_task);
-            if (data[id].is_completed == 0) {
-                newLi.innerHTML = '<input type="checkbox" id="checkbox-number-' + data[id].id_task + '" class="check"><span class="task">' + data[id].task + '</span><b class="workspace-change-button">🖉</b><b id="remove-task-button-' + data[id].id_task + '" class="workspace-delete-button">X</b>';
-                document.getElementById("ul-unfinished-tasks").insertBefore(newLi, document.getElementById("ul-unfinished-tasks").firstChild);
-            } else {
-                newLi.innerHTML = '<input type="checkbox" checked id="checkbox-number-' + data[id].id_task + '" class="check"><span class="task">' + data[id].task + '</span><b class="workspace-change-button">🖉</b><b id="remove-task-button-' + data[id].id_task + '" class="workspace-delete-button">X</b>';
-                document.getElementById("ul-finished-tasks").insertBefore(newLi, document.getElementById("ul-finished-tasks").firstChild);
-            }
-        }
+function getListTasksFromServer() {
+    var request = new XMLHttpRequest();
+    request.open('GET', "/tasksList", true);
+    request.responseType = 'json';
+    request.send();
+    request.onreadystatechange = function() {
+        var data = request.response;
+        displayListTasks(data);
     }
 }
 
-function displayListProjects(data) {
-    for (const id in data) {
-        if (!document.getElementById('project-id-' + data[id].id_project)) {
-            let newLi = document.createElement('li');
-            newLi.className = 'projects-list';
-            newLi.setAttribute('id', 'project-id-' + data[id].id_project);
-            newLi.innerHTML = '<span class="menu-span">' + data[id].project + '</span><b class="three-points-button">···</b>';
-            document.getElementById('ul-projects-list').insertBefore(newLi, document.getElementById('ul-projects-list').firstChild);
-        }
+function getListProjectsFromServer() {
+    var request = new XMLHttpRequest();
+    request.open('GET', "/projectsList");
+    request.responseType = 'json';
+    request.send();
+    request.onreadystatechange = function() {
+        var data = request.response;
+        displayListProjects(data);
     }
 }
 
-function displayListLabels(data) {
-    for (const id in data) {
-        if (!document.getElementById('label-id-' + data[id].id_label)) {
-            let newLi = document.createElement('li');
-            newLi.className = 'labels-list';
-            newLi.setAttribute('id', 'label-id-' + data[id].id_label);
-            newLi.innerHTML = '<span class="menu-span">' + data[id].label + '</span><b class="three-points-button">···</b>';
-            document.getElementById('ul-labels-list').insertBefore(newLi, document.getElementById('ul-labels-list').firstChild);
-        }
+function getListLabelsFromServer() {
+    var request = new XMLHttpRequest();
+    request.open('GET', "/labelsList");
+    request.responseType = 'json';
+    request.send();
+    request.onreadystatechange = function() {
+        var data = request.response;
+        displayListLabels(data);
     }
 }
 
-
+// Remove task
+var removeTask = function(buttonRemoveId) {
+    let id = Number(buttonRemoveId.substring(19));
+    // Serialize data to JSON
+    let task = JSON.stringify({ id_task: id });
+    let request = new XMLHttpRequest();
+    // Send form to adress "/remove-task"
+    request.open("POST", "/remove-task", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    // Remove this element
+    document.getElementById('task-id-' + id).remove();
+    // Update list tasks
+    getListTasksFromServer();
+    request.send(task);
+}
 
 // Task checkbox active
 var toggleTaskCheckbox = function(checkboxId) {
@@ -178,20 +140,4 @@ var toggleTaskCheckbox = function(checkboxId) {
     // Update list tasks
     getListTasksFromServer();
     request.send(checkbox);
-}
-
-// Remove task
-var removeTask = function(buttonRemoveId) {
-    let id = Number(buttonRemoveId.substring(19));
-    // Serialize data to JSON
-    let task = JSON.stringify({ id_task: id });
-    let request = new XMLHttpRequest();
-    // Send form to adress "/remove-task"
-    request.open("POST", "/remove-task", true);
-    request.setRequestHeader("Content-Type", "application/json");
-    // Remove this element
-    document.getElementById('task-id-' + id).remove();
-    // Update list tasks
-    getListTasksFromServer();
-    request.send(task);
 }
