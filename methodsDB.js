@@ -66,3 +66,17 @@ module.exports.removeTask = function(obj) {
     var query = connection.query('DELETE FROM task WHERE id_task = ?', post, function(err, result) {});
     console.log(query.sql);
 }
+
+// Remove project
+module.exports.removeProject = function(obj) {
+    var post = [obj.id_project];
+    var query = connection.query('DELETE FROM project WHERE id_project = ?', post, function(err, result) {});
+    console.log(query.sql);
+}
+
+// Remove label
+module.exports.removeLabel = function(obj) {
+    var post = [obj.id_label];
+    var query = connection.query('DELETE FROM label WHERE id_label = ?', post, function(err, result) {});
+    console.log(query.sql);
+}

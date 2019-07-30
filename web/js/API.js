@@ -1,11 +1,12 @@
-getListTasksFromServer();
 getListProjectsFromServer();
 getListLabelsFromServer();
+// getListTasksFromServer();
 
 window.onload = function() {
     // Page Behaviour
     document.body.onclick = function(event) {
-        pageBehaviorFunc(event);
+        getListTasksFromServer();
+        pageBehaviorFuncOnClick(event);
     }
 
     // Send form "New Task"
@@ -16,7 +17,7 @@ window.onload = function() {
         let newTask = formSendTask.elements["newtask"].value;
         if (newTask != "") {
             // Serialize data to JSON
-            let task = JSON.stringify({ newtask: newTask, id_project: "25" });
+            let task = JSON.stringify({ newtask: newTask, id_project: projectId });
             let request = new XMLHttpRequest();
             // Send form to adress "/sendtask"
             request.open("POST", "/sendtask", true);
@@ -119,6 +120,38 @@ var removeTask = function(buttonRemoveId) {
     // Update list tasks
     getListTasksFromServer();
     request.send(task);
+}
+
+// Remove project
+var removeProject = function(buttonRemoveId) {
+    let id = Number(buttonRemoveId.substring(22));
+    // Serialize data to JSON
+    let project = JSON.stringify({ id_project: id });
+    let request = new XMLHttpRequest();
+    // Send form to adress "/remove-project"
+    request.open("POST", "/remove-project", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    // Remove this element
+    document.getElementById('project-id-' + id).remove();
+    // Update list projects
+    getListProjectsFromServer();
+    request.send(project);
+}
+
+// Remove label
+var removeLabel = function(buttonRemoveId) {
+    let id = Number(buttonRemoveId.substring(20));
+    // Serialize data to JSON
+    let label = JSON.stringify({ id_label: id });
+    let request = new XMLHttpRequest();
+    // Send form to adress "/remove-label"
+    request.open("POST", "/remove-label", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    // Remove this element
+    document.getElementById('label-id-' + id).remove();
+    // Update list labels
+    getListLabelsFromServer();
+    request.send(label);
 }
 
 // Task checkbox active

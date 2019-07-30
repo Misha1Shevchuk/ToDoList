@@ -59,5 +59,21 @@ module.exports = {
             methodsDB.removeTask(req.body);
             res.sendFile(__dirname + "/web/index.html");
         });
+
+        // Remove project
+        app.post('/remove-project', jsonParser, function(req, res) {
+            if (!req.body) return res.sendStatus(400);
+            console.log(req.body);
+            methodsDB.removeProject(req.body);
+            res.sendFile(__dirname + "/web/index.html");
+        });
+
+        // Remove label
+        app.post('/remove-label', jsonParser, function(req, res) {
+            if (!req.body) return res.sendStatus(400);
+            console.log(req.body);
+            methodsDB.removeLabel(req.body);
+            res.sendFile(__dirname + "/web/index.html");
+        });
     }
 };
