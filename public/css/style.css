@@ -196,10 +196,13 @@ li {
 }
 
 .form-add-div {
-    display: none;
     width: auto;
     border-radius: 5px;
     border: 1px solid #fafafa;
+}
+
+#form-add-divlabel {
+    display: none;
 }
 
 .form-add-input {
@@ -218,7 +221,7 @@ li {
     border: 1px solid rgb(240, 237, 237);
     background-color: #fff;
     padding-bottom: 250px;
-    height: auto;
+    min-height: 59vh;
     z-index: 6;
 }
 
@@ -345,9 +348,9 @@ li {
 #ul-unfinished-tasks>li,
 #ul-finished-tasks>li {
     position: relative;
-    display: block;
     width: max-content;
-    vertical-align: middle;
+    border-bottom: 1px solid rgb(240, 232, 232);
+    padding-right: 20px;
 }
 
 .label-tasks {
@@ -380,11 +383,10 @@ li {
 
 span.task {
     display: inline-block;
-    width: 500px;
+    width: 550px;
     padding: 10px;
     font-size: 1.1em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    border-bottom: 1px solid rgb(240, 232, 232);
 }
 
 .show {

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDoList</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/public/img/favicon.ico" type="image/x-icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/pageBehavior.js"></script>
-    <script src="js/API.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+    <script src="/public/js/pageBehavior.js"></script>
+    <script src="/public/js/API.js"></script>
 </head>
 
 <body>
@@ -22,11 +22,11 @@
     <div class="wrapper">
         <div class="menu">
             <div class="menu-item" id="item-project">
-                <div class="menu-item-head" onclick="changeVisibility('form-add-divlabel');">
+                <div class="menu-item-head" onclick="changeVisibility('form-add-divproject');">
                     <h4>Проекти</h4>
                     <b class="menu-button-add" id="add-project"> + </b>
                 </div>
-                <div class="form-add-div" id="form-add-divlabel">
+                <div class="form-add-div" id="form-add-divproject">
                     <ul class="menu-list" id="ul-projects-list">
 
                     </ul>
@@ -39,11 +39,11 @@
                 </div>
             </div>
             <div class="menu-item" id="item-label">
-                <div class="menu-item-head" onclick="changeVisibility('form-add-divproject');">
-                    <h4 onclick="changeVisibility('form-add-divlabel');">Мітки</h4>
+                <div class="menu-item-head" onclick="changeVisibility('form-add-divlabel');">
+                    <h4>Мітки</h4>
                     <b class="menu-button-add" id="add-label"> + </b>
                 </div>
-                <div class="form-add-div" id="form-add-divproject">
+                <div class="form-add-div" id="form-add-divlabel">
                     <ul class="menu-list" id="ul-labels-list">
 
                     </ul>

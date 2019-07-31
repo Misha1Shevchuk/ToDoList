@@ -11,14 +11,14 @@ module.exports = {
         app.post('/sendtask', jsonParser, function(req, res) {
             if (!req.body) return res.sendStatus(400);
             methodsDB.insertNewTask(req.body);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // When sent form newProject:
         app.post('/sendproject', jsonParser, function(req, res) {
             if (!req.body) return res.sendStatus(400);
             methodsDB.insertNewProject(req.body.newproject);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // When sent form newLabel:
@@ -26,7 +26,7 @@ module.exports = {
             if (!req.body) return res.sendStatus(400);
             console.log(req.body);
             methodsDB.insertNewLabel(req.body.newlabel);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // Get tasks List
@@ -49,7 +49,7 @@ module.exports = {
             if (!req.body) return res.sendStatus(400);
             console.log(req.body);
             methodsDB.updateTaskIsCompleted(req.body);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // Remove task
@@ -57,7 +57,7 @@ module.exports = {
             if (!req.body) return res.sendStatus(400);
             console.log(req.body);
             methodsDB.removeTask(req.body);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // Remove project
@@ -65,7 +65,7 @@ module.exports = {
             if (!req.body) return res.sendStatus(400);
             console.log(req.body);
             methodsDB.removeProject(req.body);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
 
         // Remove label
@@ -73,7 +73,7 @@ module.exports = {
             if (!req.body) return res.sendStatus(400);
             console.log(req.body);
             methodsDB.removeLabel(req.body);
-            res.sendFile(__dirname + "/web/index.html");
+            res.render("index");
         });
     }
 };

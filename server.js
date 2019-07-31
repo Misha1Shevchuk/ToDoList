@@ -1,11 +1,11 @@
  var express = require('express');
  var app = express();
- app.use(express.static("web/.")); // for a page shows with css styles
+ //  app.use(express.static("web/.")); // for a page shows with css styles
+ app.use('/public', express.static('public'));
+ app.set('view engine', 'ejs');
 
-
- // Display page index.html
  app.get('/', function(req, res) {
-     res.sendFile(__dirname + "/web/index.html");
+     res.render("index");
  });
 
  var routes = require("./route");
