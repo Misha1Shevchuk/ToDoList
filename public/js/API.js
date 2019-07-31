@@ -100,7 +100,7 @@ function getListLabelsFromServer() {
     request.send();
     request.onreadystatechange = function() {
         var data = request.response;
-        // displayListLabels(data);
+        displayListLabels(data);
     }
 }
 
