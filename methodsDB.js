@@ -72,7 +72,8 @@ module.exports.removeProject = function(obj) {
     var post = [obj.id_project];
     var query1 = connection.query('DELETE FROM task WHERE id_project = ?', post, function(err, result) {});
     var query2 = connection.query('DELETE FROM project WHERE id_project = ?', post, function(err, result) {});
-    console.log(query.sql);
+    console.log(query1.sql);
+    console.log(query2.sql);
 }
 
 // Remove label

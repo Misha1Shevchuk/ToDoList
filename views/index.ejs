@@ -32,7 +32,7 @@
                     </ul>
                     <div class="menu-item-headbutton" onclick="changeVisibility('form-send-project');"><b>Новий проект</b></div>
                     <form name="form-send-project" id="form-send-project">
-                        <input type="text" class="form-add-input" id="new-project" name="newproject" maxlength="50"><br>
+                        <input type="text" class="form-add-input" id="new-project" name="newproject" maxlength="50" autocomplete="off"><br>
                         <input type="submit" class="red-button-accept form-add-buttons" id="send-project" name="send-project" value="Додати">
                         <input type="reset" id="reset-project" class="button-cancel form-add-buttons" value="Скасувати" onclick="changeVisibility('form-send-project');">
                     </form>
@@ -49,7 +49,7 @@
                     </ul>
                     <div class="menu-item-headbutton" onclick="changeVisibility('form-send-label');"><b>Нова мітка</b></div>
                     <form name="form-send-label" id="form-send-label">
-                        <input type="text" class="form-add-input" id="new-label" name="newlabel" maxlength="50"><br>
+                        <input type="text" class="form-add-input" id="new-label" name="newlabel" maxlength="50" autocomplete="off"><br>
                         <input type="submit" class="red-button-accept form-add-buttons" id="send-label" name="send-label" value="Додати">
                         <input type="reset" id="reset-label" class="button-cancel form-add-buttons" value="Скасувати" onclick="changeVisibility('form-send-label');">
                     </form>
@@ -61,7 +61,7 @@
                 <div class="add-task">
                     <h3>Додати завдання</h3>
                     <form name="form-send-task">
-                        <input type="text" id="new-task" name="newtask" tabindex="1" maxlength="250"><br>
+                        <input type="text" id="new-task" name="newtask" tabindex="1" maxlength="250" autocomplete="off"><br>
                         <input type="submit" class="red-button-accept" id="send-task" name="send-task" value="Додати завдання">
                         <input type="reset" class="button-cancel" value="Скасувати">
                     </form>

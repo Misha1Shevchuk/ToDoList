@@ -1,8 +1,6 @@
 // Import file with methods for work to DB
 var express = require('express');
 var methodsDB = require('./methodsDB');
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true });
 const jsonParser = express.json();
 
 module.exports = {
