@@ -35,6 +35,11 @@ var pageBehaviorFuncOnClick = function(event) {
 
 var selectProject = function(id) {
     projectId = Number(id.substring(11));
+    let projectsList = document.getElementsByClassName("projects-list");
+    for (var i = 0; i < projectsList.length; i++) {
+        projectsList[i].classList.remove('selected');
+    }
+    document.getElementById("project-id-" + projectId).classList.add('selected');
     document.getElementById("work-space").style.display = "block";
     getListTasksFromServer();
 }
@@ -103,7 +108,6 @@ function displayListProjects(data) {
             newLi.innerHTML = '<span class="menu-span" id="id-project-' + data[id].id_project + '">' + data[id].project + '</span><b id="three-points-button-project-' + data[id].id_project + '" class="three-points-button">···</b><div class="buttons-block" id="buttons-block-project-' + data[id].id_project + '"><b id="change-project-button-' + data[id].id_project + '" class="item-change-button">🖉 Редагувати</b><b id="remove-project-button-' + data[id].id_project + '" class="item-delete-button">X Видалити</b></div>';
 
             document.getElementById('ul-projects-list').insertBefore(newLi, document.getElementById('ul-projects-list').firstChild);
-
         }
     }
 }

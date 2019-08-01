@@ -169,7 +169,7 @@ var toggleTaskCheckbox = function(checkboxId) {
     request.setRequestHeader("Content-Type", "application/json");
     // Remove this element
     document.getElementById('task-id-' + id).remove();
+    request.send(checkbox);
     // Update list tasks
     getListTasksFromServer();
-    request.send(checkbox);
 }
