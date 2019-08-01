@@ -36,7 +36,7 @@ var pageBehaviorFuncOnClick = function(event) {
 var selectProject = function(id) {
     projectId = Number(id.substring(11));
     let projectsList = document.getElementsByClassName("projects-list");
-    for (var i = 0; i < projectsList.length; i++) {
+    for (let i = 0; i < projectsList.length; i++) {
         projectsList[i].classList.remove('selected');
     }
     document.getElementById("project-id-" + projectId).classList.add('selected');
@@ -64,7 +64,7 @@ var createDivForLabel = function(threePointsId) {
 
 var hideDiv = function() {
     var listDiv = document.getElementsByClassName('buttons-block');
-    for (var i = 0; i < listDiv.length; i++) {
+    for (let i = 0; i < listDiv.length; i++) {
         if (listDiv[i].classList.contains("show")) {
             listDiv[i].classList.toggle('show');
         }

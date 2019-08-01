@@ -72,34 +72,34 @@ window.onload = function() {
 }
 
 function getListTasksFromServer() {
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     request.open('GET', "/tasksList", true);
     request.responseType = 'json';
     request.send();
     request.onreadystatechange = function() {
-        var data = request.response;
+        let data = request.response;
         displayListTasks(data);
     }
 }
 
 function getListProjectsFromServer() {
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     request.open('GET', "/projectsList");
     request.responseType = 'json';
     request.send();
     request.onreadystatechange = function() {
-        var data = request.response;
+        let data = request.response;
         displayListProjects(data);
     }
 }
 
 function getListLabelsFromServer() {
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     request.open('GET', "/labelsList");
     request.responseType = 'json';
     request.send();
     request.onreadystatechange = function() {
-        var data = request.response;
+        let data = request.response;
         displayListLabels(data);
     }
 }
@@ -156,7 +156,7 @@ var removeLabel = function(buttonRemoveId) {
 var toggleTaskCheckbox = function(checkboxId) {
     let id = Number(checkboxId.substring(16));
     // Serialize data to JSON
-    var bool;
+    let bool;
     if (document.getElementById(checkboxId).checked) {
         bool = true;
     } else {
