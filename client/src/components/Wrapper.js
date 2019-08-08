@@ -3,7 +3,7 @@ import Menu from './Menu';
 import Content from "./Content";
 
 const Wrapper = () => (
-<div class="wrapper">
+<div className="wrapper">
     <Menu/>
     <Content/>
 </div>

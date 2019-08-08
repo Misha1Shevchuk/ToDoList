@@ -3,7 +3,7 @@ import MenuLabels from './Labels/MenuLabels';
 import MenuProjects from './Projects/MenuProjects';
 
 const Menu = () => (
-<div class="menu">
+<div className="menu">
     <MenuProjects/>
     <MenuLabels/>
 </div>
