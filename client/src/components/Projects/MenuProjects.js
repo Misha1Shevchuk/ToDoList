@@ -4,7 +4,7 @@ import ProjectsList from './ProjectsList';
 
 class MenuProjects extends React.Component {
     state = {
-        list: "якась шняга"
+        list: "Тут має бути якийсь проєкт"
     }
 
     componentDidMount() {
