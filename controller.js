@@ -33,7 +33,7 @@ module.exports = {
         });
 
         // Get projects List
-        app.get('/projectsList', function(req, res) {
+        app.post('/projectsList', function(req, res) {
             methodsDB.getProjects(res);
         });
 

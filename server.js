@@ -1,8 +1,12 @@
  const express = require('express');
  const app = express();
 
- const routes = require("./route");
- routes.configure(app);
+ const controller = require("./controller");
+ controller.configure(app);
+
+// If not exists - create tables into DB
+//   const methodsDB = require('./methodsDB');
+//   methodsDB.createTables();
 
  // listening application on port 3001 
  let server = app.listen(3001, function() {
