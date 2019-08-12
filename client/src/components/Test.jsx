@@ -16,21 +16,25 @@ class Test extends React.Component {
     // }
 
     getObjetProject = async () => {
-                // let request = new XMLHttpRequest();
-        // request.open('GET', "/projectsList");
+        // let request = new XMLHttpRequest();
+        // request.open('POST', "/projectsList");
         // request.responseType = 'json';
         // request.send();
         // request.onreadystatechange = function () {
-        //     json = request.response;
+        //     let json = request.response;
+        //     alert(json);
+            
         // }
-        const api_url = await fetch(`https://localhost:3001/projectsList`, {method: 'POST'});
-        const json = await api_url.json();
+        // this.setState({
+        //     message: "It is data!"
+        // });
 
+
+        const api_url = await fetch(`http://localhost:3001/projectsList`, { method: "POST" });
+        let json = await api_url.json();
         this.setState({
-            message: "It is data!"
+            message: json.toString()
         });
-
-
     }
 
         render() {

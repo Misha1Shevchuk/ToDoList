@@ -9,7 +9,7 @@ const ItemProject = props => (
     //         <b id={"remove-project-button-" +  props.list[id].id_project} className="item-delete-button">X Видалити</b>
     //     </div>
     // </li>
-    <li>{props.list}</li>
+    <li>{props.element}</li>
 );
 
 export default ItemProject;

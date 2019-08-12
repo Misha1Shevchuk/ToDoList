@@ -11,24 +11,16 @@ class MenuProjects extends React.Component {
         this.sendFormNewProject = this.sendFormNewProject.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.getObjetProject();
-    // }
+    componentDidMount() {
+        this.getObjetProject();
+    }
 
-    getObjetProject() {
-        let request = new XMLHttpRequest();
-        request.open('GET', "/projectsList");
-        request.responseType = 'json';
-        request.send();
-        request.onreadystatechange = function () {
-            let json = request.response;
-            // console.log(JSON.stringify(json));
-            this.setState ({ list: json });
-
-        }
-
-
-        
+    getObjetProject = async () => {
+        const api_url = await fetch(`http://localhost:3001/projectsList`, { method: "POST" });
+        let json = await api_url.json();
+        this.setState({
+            list: 'test'
+        });
     }
 
     sendFormNewProject = async (e) => {
@@ -48,11 +40,6 @@ class MenuProjects extends React.Component {
             console.log(project);
             request.send(project);
             this.getObjetProject();
-            // let obj = this.getObjetProject ();
-            // for(const key in obj) {
-            //     console.log(obj[key].project);
-            // }
-            // this.Object = ({ list: obj});
         }
     }
 

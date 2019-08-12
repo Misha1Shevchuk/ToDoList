@@ -28,7 +28,7 @@ module.exports = {
         });
 
         // Get tasks List
-        app.get('/tasksList', function(req, res) {
+        app.post('/tasksList', function(req, res) {
             methodsDB.getTasks(res);
         });
 
@@ -38,7 +38,7 @@ module.exports = {
         });
 
         // Get labels List
-        app.get('/labelsList', function(req, res) {
+        app.post('/labelsList', function(req, res) {
             methodsDB.getLabels(res);
         });
 

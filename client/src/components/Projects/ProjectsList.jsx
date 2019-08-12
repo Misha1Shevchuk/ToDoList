@@ -1,12 +1,21 @@
 import React from "react";
 import ItemProject from "./ItemProject";
 
+class ProjectsList extends React.Component {
 
-const ProjectsList = props => (
-    <ul className="menu-list" id="ul-projects-list">
-        <ItemProject list={props.list} />
-    </ul>
+    render = props => {
+        return (
+            <ul className="menu-list" id="ul-projects-list">
+                {/* {props.list.map((num) => (
+                   
+                <ItemProject key={num.toString()} element={num} />
+                ))} */}
+                <ItemProject element={this.props.list} />
 
-);
+            </ul>
+        );
+    }
+}
+
 
 export default ProjectsList;

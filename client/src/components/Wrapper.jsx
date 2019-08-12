@@ -5,9 +5,9 @@ import Test from "./Test";
 
 const Wrapper = () => (
 <div className="wrapper">
-    {/* <Menu/>
-    <Content/> */}
-    <Test/>
+    <Menu/>
+    <Content/>
+    {/* <Test/> */}
 </div>
 );
 
