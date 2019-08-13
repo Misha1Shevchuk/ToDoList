@@ -7,6 +7,5 @@ const NewProjectForm = props => (
         <input className="button-cancel form-add-buttons" id="reset-project" type="reset" value="Скасувати" />
     </form>
 );
-    
 
 export default NewProjectForm;

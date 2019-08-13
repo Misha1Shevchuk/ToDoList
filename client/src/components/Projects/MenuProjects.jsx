@@ -1,26 +1,33 @@
 import React from "react";
 import NewProjectForm from './NewProjectForm';
-import ProjectsList from './ProjectsList';
+import ItemProject from "./ItemProject";
 
 class MenuProjects extends React.Component {
     constructor() {
         super();
         this.state = {
-            list: "Тут має бути якийсь проєкт"
+            list: []
         };
         this.sendFormNewProject = this.sendFormNewProject.bind(this);
     }
 
     componentDidMount() {
-        this.getObjetProject();
+        this.getObjetProject();   
     }
 
-    getObjetProject = async () => {
-        const api_url = await fetch(`http://localhost:3001/projectsList`, { method: "POST" });
-        let json = await api_url.json();
-        this.setState({
-            list: 'test'
-        });
+    getObjetProject () {
+        fetch(`http://localhost:3001/projectsList`, { method: "POST" })
+        .then(results => {
+            return results.json();
+        }).then(data => {
+            console.log(data);
+            let projects = data.map((proj) => {
+                return (
+                       <ItemProject key={proj.id_project} element={proj} />
+                )
+            })
+            this.setState({list: projects});
+        })
     }
 
     sendFormNewProject = async (e) => {
@@ -38,23 +45,21 @@ class MenuProjects extends React.Component {
             // Clear form
             document.getElementById('new-project').value = "";
             console.log(project);
-            request.send(project);
             this.getObjetProject();
+            request.send(project);
         }
     }
 
     render() {
-        let obj = this.state.list;
-        for (const key in obj) {
-            console.log("\nMy list is:" + obj[key].project);
-        }
         return (
             <div className="menu-item" id="item-project">
                 <div className="menu-item-head" >
                     <h4>Проекти</h4><b className="menu-button-add" id="add-project"> + </b>
                 </div>
                 <div className="form-add-div" id="form-add-divproject">
-                    <ProjectsList list={this.state.list} />
+                    <ul className="menu-list" id="ul-projects-list">
+                        {this.state.list}
+                    </ul>
                     <div className="menu-item-headbutton"><b>Новий проект</b></div>
                     <NewProjectForm sendFormNewProject={this.sendFormNewProject} />
                 </div>
