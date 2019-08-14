@@ -13,7 +13,7 @@ module.exports.insertNewTask = function(newTask) {
 
 // Get tasks from DB
 module.exports.getTasks = function(res) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    
     connection.query('SELECT * FROM task', function(err, rows, fields) {
         // console.log(rows);
         res.send(rows);
@@ -31,7 +31,7 @@ module.exports.insertNewProject = function(newProject) {
 
 // Get projects from DB
 module.exports.getProjects = function(res) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     connection.query('SELECT * FROM project', function(err, rows, fields) {
         // console.log(rows);
         res.send(rows);

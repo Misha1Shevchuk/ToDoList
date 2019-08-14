@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import NewProjectForm from './NewProjectForm';
 import ItemProject from "./ItemProject";
 
@@ -8,49 +9,29 @@ class MenuProjects extends React.Component {
         this.state = {
             list: []
         };
-        this.sendFormNewProject = this.sendFormNewProject.bind(this);
     }
 
-    componentDidMount() {
-        this.getObjetProject();   
+    componentWillMount = () => {
+        this.getObjetProject();
     }
 
-    getObjetProject () {
-        fetch(`http://localhost:3001/projectsList`, { method: "POST" })
-        .then(results => {
-            return results.json();
-        }).then(data => {
-            console.log(data);
-            let projects = data.map((proj) => {
+    getObjetProject = () => {
+        axios.post(`http://localhost:3001/projectsList`).then(response => {
+            console.log(response.data);
+            let projects = response.data.map((proj) => {
                 return (
-                       <ItemProject key={proj.id_project} element={proj} />
+                    <ItemProject key={proj.id_project} element={proj} />
                 )
             })
-            this.setState({list: projects});
+            this.setState({ list: projects });
         })
     }
 
-    sendFormNewProject = async (e) => {
-        e.preventDefault();
-
-        let formSendProject = document.forms["form-send-project"];
-        let newProject = formSendProject.elements["newproject"].value;
-        if (newProject !== "") {
-            // Serialize data to JSON
-            let project = JSON.stringify({ newproject: newProject });
-            let request = new XMLHttpRequest();
-            // Send form to adress "/sendproject"
-            request.open("POST", "/sendproject", true);
-            request.setRequestHeader("Content-Type", "application/json");
-            // Clear form
-            document.getElementById('new-project').value = "";
-            console.log(project);
-            this.getObjetProject();
-            request.send(project);
-        }
+    updateList = () => {
+        this.getObjetProject();
     }
 
-    render() {
+    render = () => {
         return (
             <div className="menu-item" id="item-project">
                 <div className="menu-item-head" >
@@ -61,7 +42,7 @@ class MenuProjects extends React.Component {
                         {this.state.list}
                     </ul>
                     <div className="menu-item-headbutton"><b>Новий проект</b></div>
-                    <NewProjectForm sendFormNewProject={this.sendFormNewProject} />
+                    <NewProjectForm getList={this.updateList} getObjetProject={this.getObjetProject} />
                 </div>
             </div>
         );

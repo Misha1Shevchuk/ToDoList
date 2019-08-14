@@ -11,6 +11,4 @@ const ItemProject = props => (
     </li>
 );
 
-
-
 export default ItemProject;

@@ -4,7 +4,7 @@
  const controller = require("./controller");
  controller.configure(app);
 
-// If not exists - create tables into DB
+// If not exist - create tables into DB:
 //   const methodsDB = require('./methodsDB');
 //   methodsDB.createTables();
 
