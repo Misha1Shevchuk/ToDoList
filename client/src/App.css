@@ -306,11 +306,10 @@ li {
 
 .buttons-block {
   text-align: left;
-  display: none;
   position: absolute;
   width: max-content;
   top: 0;
-  right: 0;
+  right: 30px;
   text-align: center;
   background-color: white;
   border: 1px solid grey;
@@ -395,6 +394,3 @@ span.task {
   display: block;
 }
 
-.three-points-button:active {
-  display: block;
-}
