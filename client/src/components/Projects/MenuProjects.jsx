@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import NewProjectForm from './NewProjectForm';
-import ItemProject from "./ItemProject";
+import LiProject from "./LiProject";
 
 class MenuProjects extends React.Component {
     constructor() {
@@ -38,7 +38,7 @@ class MenuProjects extends React.Component {
             console.log(response.data);
             let projects = response.data.map((proj) => {
                 return (
-                    <ItemProject key={proj.id_project} element={proj} />
+                    <LiProject getList={this.updateList} key={proj.id_project} element={proj} />
                 )
             })
             this.setState({ list: projects });

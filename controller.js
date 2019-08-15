@@ -90,5 +90,26 @@ module.exports = {
             console.log(req.body);
             methodsDB.removeLabel(req.body);
         });
+
+        // Change Project
+        app.post('/change-project', jsonParser, function(req, res) {
+            if (!req.body) return res.sendStatus(400);
+            console.log(req.body);
+            methodsDB.changeProject(req.body);
+        });
+
+        // Change Label
+        app.post('/change-label', jsonParser, function(req, res) {
+            if (!req.body) return res.sendStatus(400);
+            console.log(req.body);
+            methodsDB.changeLabel(req.body);
+        });
+
+        // Change Task
+        app.post('/change-task', jsonParser, function(req, res) {
+            if (!req.body) return res.sendStatus(400);
+            console.log(req.body);
+            methodsDB.changeTask(req.body);
+        });
     }
 };

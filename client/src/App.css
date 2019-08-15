@@ -228,7 +228,7 @@ li {
   display: grid;
   grid-template-columns: 1fr;
   padding-left: 30px;
-  display: none;
+  /* display: none; */
 }
 
 .work-space h3 {
@@ -286,8 +286,10 @@ li {
   text-decoration: underline;
 }
 
-.three-points-button {
-  display: none;
+.item-change-button,
+.item-delete-button {
+  margin-left: 10px;
+  opacity: 0;
   float: right;
   font-size: 1.5em;
   color: gray;
@@ -295,44 +297,15 @@ li {
   transition: color .2s linear;
 }
 
-.menu-list>li:hover .three-points-button {
-  display: block;
-}
-
-.three-points-button:hover {
-  color: black;
-  cursor: pointer;
-}
-
-.buttons-block {
-  text-align: left;
-  position: absolute;
-  width: max-content;
-  top: 0;
-  right: 30px;
-  text-align: center;
-  background-color: white;
-  border: 1px solid grey;
-  border-radius: 4px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 8;
-}
-
-.item-change-button,
-.item-delete-button {
-  margin: 5px;
-  font-size: 12px;
-  color: rgb(75, 75, 75);
-  cursor: pointer;
-  user-select: none;
-  padding: 2px;
-  text-decoration: none;
-  display: block;
+.menu-list>li:hover .item-change-button,
+.menu-list>li:hover .item-delete-button {
+  opacity: 1;
 }
 
 .item-change-button:hover,
 .item-delete-button:hover {
-  color: rgb(136, 128, 128);
+  color: #625555;
+  cursor: pointer;
 }
 
 .check {

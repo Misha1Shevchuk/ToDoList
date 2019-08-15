@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import ItemProject from "./ItemProject";
 
 class NewProjectForm extends React.Component {
     constructor(props) {
