@@ -2,11 +2,25 @@ import React from "react";
 import MenuLabels from './Labels/MenuLabels';
 import MenuProjects from './Projects/MenuProjects';
 
-const Menu = () => (
-<div className="menu">
-    <MenuProjects/>
-    <MenuLabels/>
-</div>
-);
+export default class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedProject: null
+        }
+    }
 
-export default Menu;
+    selectedProject = (id) => {
+        this.setState({ selectedProject: id });
+        console.log(id);
+    }
+
+    render = () => {
+        return (
+            <div className="menu">
+                <MenuProjects selectedProject={this.selectedProject} />
+                {/* <MenuLabels /> */}
+            </div>
+        );
+    }
+}

@@ -9,6 +9,6 @@
 //   methodsDB.createTables();
 
  // listening application on port 3001 
- let server = app.listen(3001, function() {
+ let server = app.listen(3001, () => {
      console.log('Server Listening on port ' + server.address().port);
  });

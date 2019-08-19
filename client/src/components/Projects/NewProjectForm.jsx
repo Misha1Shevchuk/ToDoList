@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 
-class NewProjectForm extends React.Component {
+export default class NewProjectForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,19 +15,24 @@ class NewProjectForm extends React.Component {
         this.setState({ project: event.target.value });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
-        console.warn('Відправлений проект: ' + this.state.project);
-        axios.post(`http://localhost:3001/sendproject`, {
-            newproject: this.state.project
-        })
-        this.props.getList();
-        this.clearForm();
+        if (this.state.project !== "") {
+            console.warn('Відправлений проект: ' + this.state.project);
+            await axios.post(`http://localhost:3001/sendproject`, {
+                newproject: this.state.project
+            }).then(() => {
+                this.clearForm();
+                this.props.getList();
+            })
+        } else {
+            console.log("Please, enter name of project");
+        }
     }
-
 
     clearForm = () => {
         this.setState({ project: "" });
+        this.props.toogleVisibilityForm();
     }
 
     render = () => {
@@ -40,5 +45,3 @@ class NewProjectForm extends React.Component {
         );
     }
 }
-
-export default NewProjectForm;

@@ -190,6 +190,7 @@ li {
   background-color: white;
   padding-bottom: 5px;
   border-bottom: 1px solid #e2e1e1;
+  
 }
 
 .form-add-div {
@@ -288,6 +289,7 @@ li {
 
 .item-change-button,
 .item-delete-button {
+  padding: auto;
   margin-left: 10px;
   opacity: 0;
   float: right;
@@ -304,7 +306,7 @@ li {
 
 .item-change-button:hover,
 .item-delete-button:hover {
-  color: #625555;
+  color: #753f3f;
   cursor: pointer;
 }
 
