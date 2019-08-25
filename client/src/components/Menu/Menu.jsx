@@ -1,6 +1,5 @@
 import React from "react";
-import MenuLabels from './Labels/MenuLabels';
-import MenuProjects from './Projects/MenuProjects';
+import MenuProjects from './Projects/MenuProjects/MenuProjects';
 
 export default class Menu extends React.Component {
     constructor(props) {
@@ -19,7 +18,6 @@ export default class Menu extends React.Component {
         return (
             <div className="menu">
                 <MenuProjects selectedProject={this.selectedProject} />
-                {/* <MenuLabels /> */}
             </div>
         );
     }

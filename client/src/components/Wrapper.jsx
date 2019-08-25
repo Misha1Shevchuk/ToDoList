@@ -1,13 +1,11 @@
 import React from "react";
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 import Content from "./Content";
-import Test from "./Test";
 
 const Wrapper = () => (
 <div className="wrapper">
     <Menu/>
     <Content/>
-    {/* <Test/> */}
 </div>
 );
 

@@ -11,11 +11,9 @@ export default class ChangeProject extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (event) => {
-        this.setState({ newNameProject: event.target.value });
-    }
+    handleChange = event => this.setState({ newNameProject: event.target.value });
 
-    handleSubmit = async (event) => {
+    handleSubmit = async event => {
         event.preventDefault();
         if(this.state.newNameProject !== "") {
             console.warn('Змінити проєкт: ' + this.props.element.project + " на " + this.state.newNameProject);
@@ -31,7 +29,7 @@ export default class ChangeProject extends React.Component {
         }
     }
 
-    render = () => {
+    render() {
         return (
             <form id="form-change-project" name="form-change-project" onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.newNameProject} onChange={this.handleChange} />

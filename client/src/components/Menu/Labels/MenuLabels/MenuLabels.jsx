@@ -1,6 +1,6 @@
 import React from "react";
-import NewLabelForm from './NewLabelForm';
-import LabelsList from "./LabelsList";
+import NewLabelForm from '../NewLabelForm/NewLabelForm';
+import LabelsList from "../LabelsList/LabelsList";
 
 const MenuLabels = () => (      
     <div className="menu-item" id="item-label">

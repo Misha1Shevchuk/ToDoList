@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import ChangeProject from './ChangeProject';
+import ChangeProject from '../ChangeProjectForm/ChangeProject';
 
 export default class LiProject extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class LiProject extends React.Component {
         }
     }
 
-    removeProject = async (event) => {
+    removeProject = async event => {
         event.preventDefault();
         console.warn('Видалити проект: ' + this.props.element.project);
         await axios.post(`/remove-project`, {
@@ -28,7 +28,7 @@ export default class LiProject extends React.Component {
         }
     }
 
-    render = () => {
+    render() {
         return (
             <li className="projects-list" id={"project-id-" + this.props.element.id_project}>
                 { this.state.showChangeProjectForm ?
