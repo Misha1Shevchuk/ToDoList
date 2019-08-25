@@ -18,17 +18,17 @@ export default class ChangeProject extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         if(this.state.newNameProject !== "") {
-        console.warn('Змінити проєкт: ' + this.props.element.project + " на " + this.state.newNameProject);
-        await axios.post(`http://localhost:3001/change-project`, {
-            id_project: this.props.element.id_project,
-            project: this.state.newNameProject
-        }).then(() => {
-            this.props.showChangeProjectForm();
-            this.props.getList();
-        })
-    } else {
-        console.log("Enter new name of project");
-    }
+            console.warn('Змінити проєкт: ' + this.props.element.project + " на " + this.state.newNameProject);
+            await axios.post(`http://localhost:3001/change-project`, {
+                id_project: this.props.element.id_project,
+                project: this.state.newNameProject
+            }).then(() => {
+                this.props.showChangeProjectForm();
+                this.props.getList();
+            })
+        } else {
+            console.log("Enter new name of project");
+        }
     }
 
     render = () => {

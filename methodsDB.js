@@ -13,7 +13,7 @@ module.exports.insertNewTask = newTask => {
 
 // Get tasks from DB
 module.exports.getTasks = res => {
-    
+
     connection.query('SELECT * FROM task', (err, rows, fields) => {
         // console.log(rows);
         res.send(rows);
@@ -105,26 +105,4 @@ module.exports.changeLabelName = obj => {
     let post = [obj.label, obj.id_label];
     let query = connection.query('UPDATE task SET label = ? WHERE id_label = ?', post, (err, result) => {});
     console.log(query.sql);
-}
-
-// Create tables into database
-module.exports.createTables = () => {
-    let queryList = [{ query: 'CREATE TABLE IF NOT EXISTS `label` ( `id_label` int(11) NOT NULL, `label` varchar(50) CHARACTER SET utf8mb4 NOT NULL )' },
-        { query: 'CREATE TABLE IF NOT EXISTS `project` ( `id_project` int(11) NOT NULL, `project` varchar(100) CHARACTER SET utf8mb4 NOT NULL )' },
-        { query: 'CREATE TABLE IF NOT EXISTS `task` ( `id_task` int(11) NOT NULL, `task` varchar(250) CHARACTER SET utf8mb4 NOT NULL, `id_project` int(11) NOT NULL, `is_completed` tinyint(4) DEFAULT 0 )' },
-        { query: 'CREATE TABLE IF NOT EXISTS `task_label` ( `id_task` int(11) NOT NULL, `id_label` int(11) NOT NULL )' },
-        { query: 'ALTER TABLE `label` ADD PRIMARY KEY (`id_label`)' },
-        { query: 'ALTER TABLE `project` ADD PRIMARY KEY (`id_project`)' },
-        { query: 'ALTER TABLE `task` ADD PRIMARY KEY (`id_task`), ADD KEY `task_ibfk_2` (`id_project`)' },
-        { query: 'ALTER TABLE `task_label` ADD KEY `task_label_ibfk_1` (`id_task`)' },
-        { query: 'ALTER TABLE `label` MODIFY `id_label` int(11) NOT NULL AUTO_INCREMENT' },
-        { query: 'ALTER TABLE `project` MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT' },
-        { query: 'ALTER TABLE `task` MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT' },
-        { query: 'ALTER TABLE `task` ADD CONSTRAINT `task_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`), ADD CONSTRAINT `task_ibfk_2` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`)' },
-        { query: 'ALTER TABLE `task_label` ADD CONSTRAINT `task_label_ibfk_1` FOREIGN KEY (`id_task`) REFERENCES `task` (`id_task`)' },
-        { query: "INSERT INTO `project` (`project`) VALUES ('Проект 1')" }
-    ]
-    for (let i = 0; i < queryList.length; i++) {
-        connection.query(queryList[i].query, (err, result) => {});
-    }
 }
