@@ -13,7 +13,7 @@ export default class LiProject extends React.Component {
     removeProject = async (event) => {
         event.preventDefault();
         console.warn('Видалити проект: ' + this.props.element.project);
-        await axios.post(`http://localhost:3001/remove-project`, {
+        await axios.post(`/remove-project`, {
             id_project: this.props.element.id_project
         }).then(() => {
             this.props.getList();

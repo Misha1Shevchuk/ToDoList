@@ -14,7 +14,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "proxy": "https://blooming-chamber-22236.herokuapp.com/",
+    "proxy": "https://blooming-chamber-22236.herokuapp.com",
     "eslintConfig": {
         "extends": "react-app"
     },

@@ -34,7 +34,7 @@ export default class MenuProjects extends React.Component {
     }
 
     getList = async () => {
-        await axios.post(`http://localhost:3001/projectsList`).then(response => {
+        await axios.post(`/projectsList`).then(response => {
             console.warn(response.data);
             this.setState({
                 list: response.data.map((proj) => {
