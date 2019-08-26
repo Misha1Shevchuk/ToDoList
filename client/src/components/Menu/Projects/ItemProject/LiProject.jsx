@@ -7,7 +7,7 @@ export default class LiProject extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showChangeProjectForm: false
+            showChangeProjectForm: false,
         }
     }
 
@@ -31,7 +31,7 @@ export default class LiProject extends React.Component {
 
     render() {
         return (
-            <li className={classes.item_li}>
+            <li className={this.state.classesString} >
                 {this.state.showChangeProjectForm ?
                     <ChangeProject showChangeProjectForm={this.showChangeProjectForm} getList={this.props.getList}
                         element={this.props.element} />

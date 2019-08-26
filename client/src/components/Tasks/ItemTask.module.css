@@ -1,12 +1,13 @@
+/* Item */
+
 .item_li {
     min-height: 32px;
-    padding: 5px;
+    padding: 5px 0;
     margin-bottom: 1px;
-    margin-left: 15px;
 }
 
 .item_li:hover {
-    background-color: #ffffff;
+    background-color: #fafafa;
 }
 
 .item {
@@ -18,14 +19,16 @@
 
 .item_name {
     display: block;
-    width: 85%;
-    font-size: 1em;
+    width: 80%;
 }
+
+
+/* Buttons */
 
 .buttons_block {
     display: flex;
     justify-content: space-between;
-    width: 15%;
+    width: 5%;
     min-width: 47px;
 }
 
@@ -56,6 +59,47 @@
     height: 100%;
 }
 
-.active {
-    background-color: #fff;
+
+/* Checkbox */
+
+.checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.checkbox+label {
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox+label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 90%;
+    border: 1px solid #d4d1d1;
+    background: #fff;
+    transition: .2s;
+}
+
+input:checked+label:after {
+    content: "✓";
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    font-size: 15px;
+    color: #797878;
+    font-weight: bold;
+}
+
+input:checked+label:before {
+    background-color: #d4cdcd;
+}
+
+input:hover+label:before {
+    background-color: #c3c3c3;
 }

@@ -11,15 +11,10 @@ export default class Menu extends React.Component {
         }
     }
 
-    selectedProject = (id) => {
-        this.setState({ selectedProject: id });
-        console.log(id);
-    }
-
-    render = () => {
+    render() {
         return (
             <div className={classes.menu}>
-                <MenuProjects selectedProject={this.selectedProject} />
+                <MenuProjects selectedProject={this.props.selectedProject} />
                 <MenuLabels />
             </div>
         );

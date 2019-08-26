@@ -14,7 +14,6 @@ module.exports = {
 
         // When sent form newProject:
         app.post('/sendproject', jsonParser, (req, res) => {
-            // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             if (!req.body) return res.sendStatus(400);
             methodsDB.insertNewProject(req.body.newproject);
             methodsDB.getProjects(res);
@@ -35,7 +34,6 @@ module.exports = {
 
         // Get projects List
         app.post('/projectsList', (req, res) => {
-            // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             methodsDB.getProjects(res);
         });
 

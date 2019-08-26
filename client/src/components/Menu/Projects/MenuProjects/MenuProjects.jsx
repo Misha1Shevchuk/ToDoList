@@ -38,7 +38,7 @@ export default class MenuProjects extends React.Component {
             this.setState({
                 list: response.data.map((proj) => {
                     return (
-                        <LiProject onClick={this.props.selectedProject(proj.id_project)} getList={this.getList}
+                        <LiProject onClick={()=>this.props.selectedProject(proj.id_project)} getList={this.getList}
                             key={proj.id_project} element={proj} />
                     )
                 })

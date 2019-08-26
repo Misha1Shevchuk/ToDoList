@@ -1,35 +1,47 @@
 import React from "react";
+import axios from 'axios';
+import classes from "../Menu/stylesMenu/NewItemForm.module.css";
 
-class NewTaskForm extends React.Component {
-    sendFormNewTask(e) {
-        e.preventDefault();
-        // Get form data
-        let formSendTask = document.forms["form-send-task"];
-        let newTask = formSendTask.elements["newtask"].value;
-        if (newTask !== "") {
-            // Serialize data to JSON
-            let task = JSON.stringify({ newtask: newTask, id_project: 26 });
-            let request = new XMLHttpRequest();
-            // Send form to adress "/sendtask"
-            request.open("POST", "/sendtask", true);
-            request.setRequestHeader("Content-Type", "application/json");
-            // Clear form
-            document.getElementById('new-task').value = "";
-            request.send(task);
-            console.log(task);
-            request.onreadystatechange = function (data) {
-                // let json = data.target.response;
-            }
+export default class NewTaskForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            task: ""
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange = event => this.setState({ task: event.target.value });
+    
+    handleSubmit = async event => {
+        event.preventDefault();
+        if (this.state.task !== "") {
+            console.warn('Відправлений task: ' + this.state.task);
+            await axios.post(`/sendtask`, {
+                newtask: this.state.task,
+                id_project: "26"
+            }).then(() => {
+                this.clearForm();
+                this.props.getList();
+            })
+        } else {
+            console.log("Please, enter name of task");
         }
     }
+
+    clearForm = () => {
+        this.setState({ task: "" });
+    }
+
     render() {
         return (
-            <form name="form-send-task" onSubmit={this.sendFormNewTask}>
-                <input id="new-task" type="text" name="newtask" autoComplete="off" /><br />
-                <input className="red-button-accept" id="send-task" type="submit" name="send-task" value="Додати завдання" />
-                <input className="button-cancel" type="reset" value="Скасувати" />
+            <form className={classes.form_send_item} name="form-send-task" onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.task} onChange={this.handleChange} 
+                    className={classes.input_new_item} name="newtask" autoComplete="off" placeholder="Нове завдання"/><br />
+                <input type="submit" className={classes.button_accept} name="send-task" value="Додати" />
+                <input type="reset" onClick={this.clearForm} className={classes.button_cancel} value="Скасувати" />
             </form>
         );
     }
 }
-export default NewTaskForm;

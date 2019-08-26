@@ -1,12 +1,21 @@
 import React from "react";
 import Menu from './Menu/Menu';
-import Content from "./Content";
+import Content from "./Tasks/Content";
 
-const Wrapper = () => (
-<div className="wrapper">
-    <Menu/>
-    <Content/>
-</div>
-);
+export default class Wrapper extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedProject: null
+        }
+    }
 
-export default Wrapper;
+    render() {
+        return (
+            <div className="wrapper">
+                <Menu />
+                <Content />
+            </div>
+        )
+    }
+}
