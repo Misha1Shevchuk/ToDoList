@@ -1,18 +1,69 @@
 import React from "react";
+import axios from 'axios';
 import NewLabelForm from '../NewLabelForm/NewLabelForm';
-import LabelsList from "../LabelsList/LabelsList";
+import ItemLabel from "../ItemLabel/LiLabel";
+import classes from "./MenuItems.module.css";
 
-const MenuLabels = () => (      
-    <div className="menu-item" id="item-label">
-        <div className="menu-item-head">
-            <h4>Мітки</h4><b className="menu-button-add" id="add-label"> + </b>
-        </div>
-        <div className="form-add-div" id="form-add-divlabel">
-            <LabelsList/>
-            <div className="menu-item-headbutton"><b>Нова мітка</b></div>
-            <NewLabelForm/>
-        </div>
-    </div>
-);
+export default class MenuLabels extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            list: [],
+            showForm: false,
+            showList: false
+        };
+    }
 
-export default MenuLabels;
+    toogleVisibilityForm = () => {
+        if (this.state.showForm) {
+            this.setState({ showForm: false })
+        } else {
+            this.setState({ showForm: true })
+        }
+    }
+
+    toogleVisibilityList = () => {
+        if (this.state.showList) {
+            this.setState({ showList: false, showForm: false })
+        } else {
+            this.setState({ showList: true })
+        }
+    }
+
+    componentDidMount = () => this.getList();
+
+    getList = async () => {
+        await axios.post(`/labelsList`).then(response => {
+            console.warn(response.data);
+            this.setState({
+                list: response.data.map((label) => {
+                    return (
+                        <ItemLabel getList={this.getList}
+                            key={label.id_label} element={label} />
+                    )
+                })
+            })
+        })
+    }
+
+    render() {
+        return (
+            <div className={classes.items_block}>
+                <div className={classes.head} onClick={this.toogleVisibilityList}>
+                    <h4>Мітки</h4>
+                    <button className={classes.head_button_plus}> + </button>
+                </div>
+                {this.state.showList ?
+                    <div className={classes.items_content}>
+                        <ul className={classes.menu_list}>
+                            {this.state.list}
+                        </ul>
+                        {this.state.showForm ? <NewLabelForm getList={this.getList}
+                            toogleVisibilityForm={this.toogleVisibilityForm} /> 
+                            : <button className={classes.new_item_button} onClick={this.toogleVisibilityForm}>Нова мітка</button>}
+                    </div>
+                    : null}
+            </div>
+        );
+    }
+}

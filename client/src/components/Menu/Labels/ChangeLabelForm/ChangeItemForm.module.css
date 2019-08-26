@@ -1,11 +1,10 @@
-.form_send_project {
+.change_item_form {
+    display: block;
+    margin-top: 1px;
     width: 100%;
-    padding: 10px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e1e1;
 }
 
-.input_new_project {
+.input_name {
     width: 100%;
     padding: 5px;
     border: 1px solid silver;
@@ -16,15 +15,16 @@
 
 .button_accept {
     margin-top: 7px;
-    padding: 8px;
+    padding: 4px 8px;
     background-color: rgb(219, 76, 63);
     font-size: 1em;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     color: #fafafa;
     outline: none;
     user-select: none;
-    transition: color .2s linear;
+    transition: all .2s linear;
 }
 
 .button_accept:hover {

@@ -1,11 +1,11 @@
-.item_project {
+.item_li {
     min-height: 32px;
     padding: 5px;
     margin-bottom: 1px;
     margin-left: 15px;
 }
 
-.item_project:hover {
+.item_li:hover {
     background-color: #ffffff;
 }
 
@@ -46,8 +46,8 @@
     background-color: #fafafa;
 }
 
-.item_project:hover .item_change_button,
-.item_project:hover .item_delete_button {
+.item_li:hover .item_change_button,
+.item_li:hover .item_delete_button {
     opacity: 1;
 }
 

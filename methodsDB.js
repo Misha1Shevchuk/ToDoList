@@ -49,7 +49,6 @@ module.exports.insertNewLabel = newLabel => {
 
 // Get labels from DB
 module.exports.getLabels = res => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     connection.query('SELECT * FROM label', (err, rows, fields) => {
         // console.log(rows);
         res.send(rows);

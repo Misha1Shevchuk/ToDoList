@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import classes from "./NewProjectForm.module.css";
+import classes from "../../Labels/NewLabelForm/NewItemForm.module.css";
 
 export default class NewProjectForm extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class NewProjectForm extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
         if (this.state.project !== "") {
-            console.warn('Відправлений проект: ' + this.state.project);
+            console.warn('Відправлений проєкт: ' + this.state.project);
             await axios.post(`/sendproject`, {
                 newproject: this.state.project
             }).then(() => {
@@ -36,13 +36,11 @@ export default class NewProjectForm extends React.Component {
 
     render() {
         return (
-            <form className={classes.form_send_project} name="form-send-project" onSubmit={this.handleSubmit}>
+            <form className={classes.form_send_item} name="form-send-project" onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.project} onChange={this.handleChange} 
-                    className={classes.input_new_project} id="new-project" name="newproject" autoComplete="off" placeholder="Новий проект"/><br />
-                <input type="submit" className="red-button-accept form-add-buttons"
-                    id="send-project" name="send-project" value="Додати" />
-                <input type="reset" onClick={this.clearForm} className="button-cancel 
-                    form-add-buttons" id="reset-project" value="Скасувати" />
+                    className={classes.input_new_item} name="newproject" autoComplete="off" placeholder="Новий проєкт"/><br />
+                <input type="submit" className={classes.button_accept} name="send-project" value="Додати" />
+                <input type="reset" onClick={this.clearForm} className={classes.button_cancel} value="Скасувати" />
             </form>
         );
     }

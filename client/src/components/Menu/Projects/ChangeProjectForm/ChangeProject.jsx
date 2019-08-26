@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import classes from "./ChangeProject.module.css";
+import classes from "../../Labels/ChangeLabelForm/ChangeItemForm.module.css";
 
 export default class ChangeProject extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ export default class ChangeProject extends React.Component {
 
     render() {
         return (
-            <form className={classes.change_project_form} name="form-change-project" onSubmit={this.handleSubmit}>
+            <form className={classes.change_item_form} name="form-change-project" onSubmit={this.handleSubmit}>
                 <input className={classes.input_name} type="text" value={this.state.newNameProject} onChange={this.handleChange} /><br/>
                 <input className={classes.button_accept} type="submit" value="Змінити" />
                 <input className={classes.button_cancel} type="reset" onClick={this.props.showChangeProjectForm} value="Скасувати" />

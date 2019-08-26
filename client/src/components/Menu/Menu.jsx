@@ -1,5 +1,6 @@
 import React from "react";
 import MenuProjects from './Projects/MenuProjects/MenuProjects';
+import MenuLabels from "./Labels/MenuLabels/MenuLabels";
 import classes from "./Menu.module.css";
 
 export default class Menu extends React.Component {
@@ -19,6 +20,7 @@ export default class Menu extends React.Component {
         return (
             <div className={classes.menu}>
                 <MenuProjects selectedProject={this.selectedProject} />
+                <MenuLabels />
             </div>
         );
     }

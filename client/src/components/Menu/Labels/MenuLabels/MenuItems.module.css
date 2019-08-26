@@ -1,4 +1,4 @@
-.projects_block {
+.items_block {
     min-width: 150px;
 }
 
@@ -37,7 +37,7 @@
     color: black;
 }
 
-.projects_content {
+.items_content {
     width: 100%;
 }
 
@@ -48,7 +48,7 @@
     overflow-x: hidden;
 }
 
-.new_project_button {
+.new_item_button {
     width: 100%;
     padding: 10px 0;
     text-align: left;
@@ -57,7 +57,7 @@
     border: none;
 }
 
-.new_project_button:hover {
+.new_item_button:hover {
     cursor: pointer;
     background-color: #fff;
 }

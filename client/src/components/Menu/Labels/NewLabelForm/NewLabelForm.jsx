@@ -1,38 +1,47 @@
 import React from "react";
+import axios from 'axios';
+import classes from "./NewItemForm.module.css";
 
-class NewLabelForm extends React.Component {
-
-    sendFormNewLabel (e) {
-        e.preventDefault();
-        //Get form data
-        let formSendLabel = document.forms["form-send-label"];
-        let newLabel = formSendLabel.elements["newlabel"].value;
-        if (newLabel !== "") {
-            // Serialize data to JSON
-            let label = JSON.stringify({ newlabel: newLabel });
-            let request = new XMLHttpRequest();
-            // Send form to adress "/sendlabel"
-            request.open("POST", "/sendlabel", true);
-            request.setRequestHeader("Content-Type", "application/json");
-            // Clear form
-            document.getElementById('new-label').value = ""
-            console.log(label);
-            request.send(label);
-            request.onreadystatechange = function (data) {
-                // let json = data.target.response;
-            }
+export default class NewLabelsForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            label: ""
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange = event => this.setState({ label: event.target.value });
+    
+    handleSubmit = async event => {
+        event.preventDefault();
+        if (this.state.label !== "") {
+            console.warn('Відправлена мітка: ' + this.state.label);
+            await axios.post(`/sendlabel`, {
+                newlabel: this.state.label
+            }).then(() => {
+                this.clearForm();
+                this.props.getList();
+            })
+        } else {
+            console.log("Please, enter name of label");
+        }
+    }
+
+    clearForm = () => {
+        this.setState({ label: "" });
+        this.props.toogleVisibilityForm();
     }
 
     render() {
         return (
-            <form id="form-send-label" name="form-send-label" onSubmit={this.sendFormNewLabel}>
-                <input className="form-add-input" id="new-label" type="text" name="newlabel" autoComplete="off" /><br />
-                <input className="red-button-accept form-add-buttons" id="send-label" type="submit" name="send-label" value="Додати" />
-                <input className="button-cancel form-add-buttons" id="reset-label" type="reset" value="Скасувати" />
+            <form className={classes.form_send_item} name="form-send-item" onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.label} onChange={this.handleChange}
+                    className={classes.input_new_item} name="newlabel" autoComplete="off" placeholder="Нова мітка"/><br />
+                <input type="submit" className={classes.button_accept} name="send-label" value="Додати" />
+                <input type="reset" onClick={this.clearForm} className={classes.button_cancel} value="Скасувати" />
             </form>
         );
     }
 }
-
-export default NewLabelForm;
