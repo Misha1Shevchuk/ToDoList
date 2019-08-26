@@ -102,6 +102,6 @@ module.exports.changeProjectName = obj => {
 // Change label name
 module.exports.changeLabelName = obj => {
     let post = [obj.label, obj.id_label];
-    let query = connection.query('UPDATE task SET label = ? WHERE id_label = ?', post, (err, result) => {});
+    let query = connection.query('UPDATE label SET label = ? WHERE id_label = ?', post, (err, result) => {});
     console.log(query.sql);
 }
