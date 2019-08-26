@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import ChangeLabel from '../ChangeLabelForm/ChangeLabel';
-import classes from "./ItemLi.module.css";
+import classes from "../../stylesMenu/ItemLi.module.css";
 
 export default class LiLabel extends React.Component {
     constructor(props) {

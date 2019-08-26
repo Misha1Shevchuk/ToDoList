@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import classes from "./NewItemForm.module.css";
+import classes from "../../stylesMenu/NewItemForm.module.css";
 
 export default class NewLabelsForm extends React.Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import classes from "./ChangeItemForm.module.css";
+import classes from "../../stylesMenu/ChangeItemForm.module.css";
 
 export default class ChangeLabel extends React.Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import classes from "../../Labels/NewLabelForm/NewItemForm.module.css";
+import classes from "../../stylesMenu/NewItemForm.module.css";
 
 export default class NewProjectForm extends React.Component {
     constructor(props) {

@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import NewProjectForm from '../NewProjectForm/NewProjectForm';
 import LiProject from "../ItemProject/LiProject";
-import classes from "../../Labels/MenuLabels/MenuItems.module.css";
+import classes from "../../stylesMenu/MenuItems.module.css";
 
 export default class MenuProjects extends React.Component {
     constructor() {

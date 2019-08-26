@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import NewLabelForm from '../NewLabelForm/NewLabelForm';
 import ItemLabel from "../ItemLabel/LiLabel";
-import classes from "./MenuItems.module.css";
+import classes from "../../stylesMenu/MenuItems.module.css";
 
 export default class MenuLabels extends React.Component {
     constructor() {
