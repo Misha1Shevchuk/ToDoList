@@ -1,0 +1,57 @@
+.item_project {
+    min-height: 32px;
+    padding: 5px;
+    margin-bottom: 1px;
+    margin-left: 15px;
+}
+
+.item_project:hover {
+    background-color: #ffffff;
+}
+
+.item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.item_name {
+    display: block;
+    width: 85%;
+    font-size: 1em;
+}
+
+.buttons_block {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    min-width: 47px;
+}
+
+.item_change_button,
+.item_delete_button {
+    height: 22px;
+    padding: 4px;
+    opacity: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .4s linear;
+}
+
+.item_change_button:hover,
+.item_delete_button:hover {
+    background-color: #fafafa;
+}
+
+.item_project:hover .item_change_button,
+.item_project:hover .item_delete_button {
+    opacity: 1;
+}
+
+.item_change_button>img,
+.item_delete_button>img {
+    height: 100%;
+}

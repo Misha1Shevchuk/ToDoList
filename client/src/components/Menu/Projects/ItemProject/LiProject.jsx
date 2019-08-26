@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import ChangeProject from '../ChangeProjectForm/ChangeProject';
+import classes from "./LiProject.module.css";
 
 export default class LiProject extends React.Component {
     constructor(props) {
@@ -30,13 +31,21 @@ export default class LiProject extends React.Component {
 
     render() {
         return (
-            <li className="projects-list" id={"project-id-" + this.props.element.id_project}>
-                { this.state.showChangeProjectForm ?
-                    <ChangeProject showChangeProjectForm={this.showChangeProjectForm} getList={this.props.getList} element={this.props.element} />
-                    : null }
-                <span className="menu-span" id={"id-project-" + this.props.element.id_project}>  {this.props.element.project}  </span>
-                <b id={"remove-project-button-" + this.props.element.id_project} onClick={this.removeProject} className="item-delete-button">X</b>
-                <b id={"change-project-button-" + this.props.element.id_project} className="item-change-button" onClick={this.showChangeProjectForm}>✎</b>
+            <li className={classes.item_project}>
+                {this.state.showChangeProjectForm ?
+                    <ChangeProject showChangeProjectForm={this.showChangeProjectForm} getList={this.props.getList}
+                        element={this.props.element} />
+                    : <div className={classes.item}>
+                    <span className={classes.item_name}>  {this.props.element.project}</span>
+                    <div className={classes.buttons_block}>
+                        <button onClick={this.showChangeProjectForm} className={classes.item_change_button}>
+                            <img src="img/pencil.svg" alt="change" />
+                        </button>
+                        <button onClick={this.removeProject} className={classes.item_delete_button}>
+                            <img src="img/remove.svg" alt="change" />
+                        </button>
+                    </div>
+                </div>}
             </li>
         );
     }

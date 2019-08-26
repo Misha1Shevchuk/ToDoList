@@ -1,6 +1,20 @@
-* {
-    padding: 0;
-    margin: 0;
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: silver;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: silver;
 }
 
 body {
@@ -22,16 +36,8 @@ li {
 
 /* Menu */
 
-.menu {
-    margin-left: 20%;
-    flex-basis: 15%;
-    padding-top: 20px;
-    flex: 1;
-    text-align: left;
-    display: block;
-}
 
-.menu-item-head>h4 {
+/* .menu-item-head>h4 {
     display: inline-block;
     font-size: 1.2em;
     margin: 10px;
@@ -58,25 +64,6 @@ li {
 
 .projects-list {
     color: black;
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: white;
-}
-
-::-webkit-scrollbar-thumb:vertical {
-    height: 5px;
-    background-color: silver;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-    width: 5px;
-    background-color: silver;
 }
 
 .menu-list>li {
@@ -125,25 +112,27 @@ li {
     width: 180px;
     font-size: 1em;
     margin: 3px;
-}
+} */
 
 
 /* form add */
 
-#form-send-label,
+
+/* #form-send-label,
 #form-send-project {
     padding: 10px;
-    /* display: none; */
     background-color: white;
     padding-bottom: 5px;
     border-bottom: 1px solid #e2e1e1;
 }
+ */
 
-.form-add-div {
+
+/* .form-add-div {
     width: auto;
     border-radius: 5px;
     border: 1px solid #fafafa;
-}
+} */
 
 #form-add-divlabel {
     /* display: none; */

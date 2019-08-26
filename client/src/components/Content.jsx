@@ -5,7 +5,7 @@ import FinishedTasks from "./Tasks/FinishedTasks";
 
 const Content = () => (
     <div className="content">
-        <div className="work-space" id="work-space">
+        {/* <div className="work-space" id="work-space">
             <div className="add-task">
                 <h3>Додати завдання</h3>
                 <NewTaskForm />
@@ -22,7 +22,7 @@ const Content = () => (
                 <h3>Виконані завдання</h3>
                 <FinishedTasks />
             </div>
-        </div>
+        </div> */}
     </div>
 );
 

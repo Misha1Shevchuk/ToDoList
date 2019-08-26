@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import NewProjectForm from '../NewProjectForm/NewProjectForm';
 import LiProject from "../ItemProject/LiProject";
+import classes from "./MenuProjects.module.css";
 
 export default class MenuProjects extends React.Component {
     constructor() {
@@ -47,20 +48,19 @@ export default class MenuProjects extends React.Component {
 
     render() {
         return (
-            <div className="menu-item" id="item-project">
-                <div className="menu-item-head" onClick={this.toogleVisibilityList}>
-                    <h4>Проекти</h4><b className="menu-button-add" id="add-project"> + </b>
+            <div className={classes.projects_block}>
+                <div className={classes.head} onClick={this.toogleVisibilityList}>
+                    <h4>Проекти</h4>
+                    <button className={classes.head_button_plus}> + </button>
                 </div>
                 {this.state.showList ?
-                    <div className="form-add-div" id="form-add-divproject">
-                        <ul className="menu-list" id="ul-projects-list">
+                    <div className={classes.projects_content}>
+                        <ul className={classes.menu_list}>
                             {this.state.list}
                         </ul>
-                        <div className="menu-item-headbutton" onClick={this.toogleVisibilityForm}>
-                            <b>Новий проект</b>
-                        </div>
                         {this.state.showForm ? <NewProjectForm getList={this.getList}
-                            toogleVisibilityForm={this.toogleVisibilityForm} /> : null}
+                            toogleVisibilityForm={this.toogleVisibilityForm} /> 
+                            : <button className={classes.new_project_button} onClick={this.toogleVisibilityForm}>Новий проект</button>}
                     </div>
                     : null}
             </div>
