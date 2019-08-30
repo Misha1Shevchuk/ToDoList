@@ -1,15 +1,15 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import Wrapper from './components/Wrapper';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Wrapper from "./components/Wrapper";
 
 function App() {
-    return (
-    <div >
-        <Header />
-        <Wrapper />
+  return (
+    <div>
+      <Header />
+      <Wrapper />
     </div>
-    );
+  );
 }
 
 export default App;

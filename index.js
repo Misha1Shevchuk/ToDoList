@@ -1,19 +1,18 @@
- const express = require('express');
- const app = express();
- const path = require('path');
+const express = require("express");
+const app = express();
+const path = require("path");
 
- const controller = require("./controller");
- controller.configure(app);
+const controller = require("./controller");
+controller.configure(app);
 
- // serve static files from the React app
- app.use(express.static(path.join(__dirname, 'client/build')));
+// serve static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
- app.get('*', (req, res) => {
-     res.sendFile(path.join(__dirname + '/client/build/index.html'));
- });
-
- // listening application on port
- let server = app.listen(process.env.PORT || 5000, () => {
-     console.log(`Server Listening on port ${server.address().port}`);
- });
+// listening application on port
+let server = app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server Listening on port ${server.address().port}`);
+});
