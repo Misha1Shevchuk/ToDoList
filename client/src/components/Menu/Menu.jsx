@@ -8,7 +8,7 @@ export default class Menu extends React.Component {
     return (
       <div className={classes.menu}>
         <MenuProjects activeProjectId={this.props.activeProjectId} />
-        <MenuLabels />
+        {/* <MenuLabels /> */}
       </div>
     );
   }

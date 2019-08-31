@@ -18,6 +18,7 @@
 }
 
 .item_name {
+  margin-left: 30px;
   display: block;
   width: 80%;
 }

@@ -1,63 +1,72 @@
 .items_block {
-    min-width: 150px;
+  min-width: 150px;
 }
 
 .head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.2em;
-    padding: 3px;
-    background-color: transparent;
-    border-bottom: 1px solid #e2e1e1;
-    user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  padding: 3px;
+  background-color: transparent;
+  border-bottom: 1px solid #e2e1e1;
+  user-select: none;
 }
 
 .head:hover {
-    background-color: #f7f7f7;
-    cursor: pointer;
+  background-color: #f7f7f7;
+  cursor: pointer;
 }
 
 .head_button_plus {
-    background-color: transparent;
-    height: auto;
-    font-weight: 700;
-    padding: 3px;
-    font-size: 1.5em;
-    border: none;
-    color: silver;
+  background-color: transparent;
+  height: auto;
+  font-weight: 700;
+  padding: 3px;
+  font-size: 1.5em;
+  border: none;
+  color: silver;
 }
 
 .head_button_plus:hover {
-    cursor: pointer;
-    color: grey;
+  cursor: pointer;
+  color: grey;
 }
 
 .head_button_plus:active {
-    color: black;
+  color: black;
 }
 
 .items_content {
-    width: 100%;
+  width: 100%;
 }
 
 .menu_list {
-    overflow: auto;
-    max-height: 300px;
-    border-bottom: 1px solid #e2e1e1;
-    overflow-x: hidden;
+  overflow: auto;
+  max-height: 300px;
+  border-bottom: 1px solid #e2e1e1;
+  overflow-x: hidden;
 }
 
 .new_item_button {
-    width: 100%;
-    padding: 10px 0;
-    text-align: left;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
+  width: 100%;
+  padding: 10px 0;
+  text-align: left;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
 }
 
 .new_item_button:hover {
-    cursor: pointer;
-    background-color: #fff;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.active {
+  display: block;
+  background-color: #fff;
 }

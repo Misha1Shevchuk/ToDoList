@@ -3,6 +3,7 @@ import axios from "axios";
 import NewProjectForm from "../NewProjectForm/NewProjectForm";
 import LiProject from "../ItemProject/LiProject";
 import classes from "../../stylesMenu/MenuItems.module.css";
+import { NavLink, BrowserRouter } from "react-router-dom";
 
 export default class MenuProjects extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ export default class MenuProjects extends React.Component {
       list: [],
       showForm: false,
       showList: true,
-      active: null
+      active: 0
     };
   }
 
@@ -43,12 +44,18 @@ export default class MenuProjects extends React.Component {
       this.setState({
         list: response.data.map(proj => {
           return (
-            <LiProject
-              selectProject={this.selectProject}
-              getList={this.getList}
+            <NavLink
+              className={classes.link}
+              activeClassName={classes.active}
               key={proj.id_project}
-              element={proj}
-            />
+              to={`/projects/${proj.id_project}`}
+            >
+              <LiProject
+                selectProject={this.selectProject}
+                getList={this.getList}
+                element={proj}
+              />
+            </NavLink>
           );
         })
       });
@@ -57,30 +64,32 @@ export default class MenuProjects extends React.Component {
 
   render() {
     return (
-      <div className={classes.items_block}>
-        <div className={classes.head} onClick={this.toogleVisibilityList}>
-          <h4>Проекти</h4>
-          <button className={classes.head_button_plus}> + </button>
-        </div>
-        {this.state.showList ? (
-          <div className={classes.item_content}>
-            <ul className={classes.menu_list}>{this.state.list}</ul>
-            {this.state.showForm ? (
-              <NewProjectForm
-                getList={this.getList}
-                toogleVisibilityForm={this.toogleVisibilityForm}
-              />
-            ) : (
-              <button
-                className={classes.new_item_button}
-                onClick={this.toogleVisibilityForm}
-              >
-                Новий проект
-              </button>
-            )}
+      <BrowserRouter>
+        <div className={classes.items_block}>
+          <div className={classes.head} onClick={this.toogleVisibilityList}>
+            <h4>Проекти</h4>
+            <button className={classes.head_button_plus}> + </button>
           </div>
-        ) : null}
-      </div>
+          {this.state.showList ? (
+            <div className={classes.item_content}>
+              <ul className={classes.menu_list}>{this.state.list}</ul>
+              {this.state.showForm ? (
+                <NewProjectForm
+                  getList={this.getList}
+                  toogleVisibilityForm={this.toogleVisibilityForm}
+                />
+              ) : (
+                <button
+                  className={classes.new_item_button}
+                  onClick={this.toogleVisibilityForm}
+                >
+                  Новий проект
+                </button>
+              )}
+            </div>
+          ) : null}
+        </div>
+      </BrowserRouter>
     );
   }
 }

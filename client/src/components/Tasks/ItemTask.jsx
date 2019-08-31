@@ -14,7 +14,6 @@ export default class ItemTask extends React.Component {
 
   removeTask = async event => {
     event.preventDefault();
-    console.warn("Видалити завдання: " + this.props.element.task);
     await axios
       .post(`/remove-task`, {
         id_task: this.props.element.id_task

@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu/Menu";
 import Content from "./Tasks/Content";
+import { Route, BrowserRouter } from "react-router-dom";
 
 export default class Wrapper extends React.Component {
   constructor(props) {
@@ -18,13 +19,15 @@ export default class Wrapper extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <Menu activeProjectId={this.activeProjectId} />
-        <Content
-          activeProjectId={this.state.activeProjectId}
-          ref={this.child}
-        />
-      </div>
+      <BrowserRouter>
+        <div className="wrapper">
+          <Menu activeProjectId={this.activeProjectId} />
+          <Content
+            activeProjectId={this.state.activeProjectId}
+            ref={this.child}
+          />
+        </div>
+      </BrowserRouter>
     );
   }
 }
