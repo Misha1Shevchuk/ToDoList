@@ -26,7 +26,6 @@ export default class ItemTask extends React.Component {
 
   markCompleted = async event => {
     event.preventDefault();
-    console.warn("Позначити завдання виконаним: " + this.props.element.task);
     await axios
       .post(`/task-checkbox-active`, {
         id_task: this.props.element.id_task,

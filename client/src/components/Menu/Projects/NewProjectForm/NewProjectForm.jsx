@@ -17,7 +17,6 @@ export default class NewProjectForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.project !== "") {
-      console.warn("Відправлений проєкт: " + this.state.project);
       await axios
         .post(`/sendproject`, {
           newproject: this.state.project

@@ -17,7 +17,6 @@ export default class NewLabelsForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.label !== "") {
-      console.warn("Відправлена мітка: " + this.state.label);
       await axios
         .post(`/sendlabel`, {
           newlabel: this.state.label

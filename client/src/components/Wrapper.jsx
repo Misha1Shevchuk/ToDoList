@@ -7,14 +7,13 @@ export default class Wrapper extends React.Component {
     super(props);
     this.child = React.createRef();
     this.state = {
-      activeProjectId: null
+      activeProjectId: 0
     };
   }
 
   activeProjectId = async id => {
     await this.setState({ activeProjectId: id });
-    console.log(`wrapper ${this.state.activeProjectId}`);
-    await this.child.current.updateTasks();
+    await this.child.current.getList();
   };
 
   render() {

@@ -17,12 +17,6 @@ export default class ChangeLabel extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameLabel !== "") {
-      console.warn(
-        "Змінити мітку: " +
-          this.props.element.label +
-          " на " +
-          this.state.newNameLabel
-      );
       await axios
         .post(`/change-label`, {
           id_label: this.props.element.id_label,

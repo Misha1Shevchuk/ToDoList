@@ -17,12 +17,6 @@ export default class ChangeProject extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameProject !== "") {
-      console.warn(
-        "Змінити проєкт: " +
-          this.props.element.project +
-          " на " +
-          this.state.newNameProject
-      );
       await axios
         .post(`/change-project`, {
           id_project: this.props.element.id_project,

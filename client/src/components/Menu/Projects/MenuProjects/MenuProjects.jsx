@@ -11,7 +11,7 @@ export default class MenuProjects extends React.Component {
       list: [],
       showForm: false,
       showList: true,
-      active: 27
+      active: null
     };
   }
 
@@ -33,16 +33,13 @@ export default class MenuProjects extends React.Component {
 
   componentWillMount = () => this.getList();
 
-  selectProject = id => {
-    this.setState({ active: id });
+  selectProject = async id => {
+    await this.setState({ active: id });
     this.props.activeProjectId(this.state.active);
-    console.log(this.state.active);
   };
 
   getList = async () => {
     await axios.post(`/projectsList`).then(response => {
-      console.warn(response.data);
-
       this.setState({
         list: response.data.map(proj => {
           return (

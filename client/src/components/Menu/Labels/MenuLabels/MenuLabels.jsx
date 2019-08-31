@@ -34,7 +34,6 @@ export default class MenuLabels extends React.Component {
 
   getList = async () => {
     await axios.post(`/labelsList`).then(response => {
-      console.warn(response.data);
       this.setState({
         list: response.data.map(label => {
           return (

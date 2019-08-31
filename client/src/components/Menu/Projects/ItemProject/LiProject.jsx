@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import axios from "axios";
 import ChangeProject from "../ChangeProjectForm/ChangeProject";
 import classes from "../../stylesMenu/ItemLi.module.css";
@@ -13,7 +13,6 @@ export default class LiProject extends React.Component {
 
   removeProject = async event => {
     event.preventDefault();
-    console.warn("Видалити проект: " + this.props.element.project);
     await axios
       .post(`/remove-project`, {
         id_project: this.props.element.id_project

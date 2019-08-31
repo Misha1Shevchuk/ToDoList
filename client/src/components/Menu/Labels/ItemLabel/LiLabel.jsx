@@ -13,7 +13,6 @@ export default class LiLabel extends React.Component {
 
   removeLabel = async event => {
     event.preventDefault();
-    console.warn("Видалити мітку: " + this.props.element.label);
     await axios
       .post(`/remove-label`, {
         id_label: this.props.element.id_label

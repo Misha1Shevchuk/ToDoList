@@ -17,12 +17,6 @@ export default class ChangeTask extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameTask !== "") {
-      console.warn(
-        "Змінити task: " +
-          this.props.element.task +
-          " на " +
-          this.state.newNameTask
-      );
       await axios
         .post(`/change-task`, {
           id_task: this.props.element.id_task,

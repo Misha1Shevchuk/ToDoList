@@ -8,19 +8,14 @@ export default class Content extends React.Component {
     super(props);
     this.state = {
       listFinishedTasks: [],
-      listUnfinishedTasks: [],
-      activeProjectId: this.props.activeProjectId
+      listUnfinishedTasks: []
     };
   }
 
   componentWillMount = () => this.getList();
 
-  updateTasks = () => this.getList();
-
   getList = async () => {
     await axios.post(`/tasksList`).then(response => {
-      console.warn(response.data);
-      console.log(`tasks with project id ${this.props.activeProjectId}`);
       this.setState({
         listFinishedTasks: response.data.map(task => {
           if (
@@ -34,6 +29,8 @@ export default class Content extends React.Component {
                 element={task}
               />
             );
+          } else {
+            return null;
           }
         }),
         listUnfinishedTasks: response.data.map(task => {
@@ -48,6 +45,8 @@ export default class Content extends React.Component {
                 element={task}
               />
             );
+          } else {
+            return null;
           }
         })
       });
@@ -57,24 +56,31 @@ export default class Content extends React.Component {
   render() {
     return (
       <div className="content">
-        <div className="work-space" id="work-space">
-          <div className="add-task">
-            <h3>Додати завдання</h3>
-            <NewTaskForm getList={this.getList} />
-          </div>
-          <div className="unfinished-tasks" id="unfinished-tasks-div">
-            <h3>Незавершені завдання</h3>
-            <ul id="ul-finished-tasks">{this.state.listUnfinishedTasks}</ul>
-          </div>
-          {/* <div className="label-tasks">
+        {this.props.activeProjectId !== 0 ? (
+          <div className="work-space" id="work-space">
+            <div className="add-task">
+              <h3>Додати завдання</h3>
+              <NewTaskForm
+                activeProjectId={this.props.activeProjectId}
+                getList={this.getList}
+              />
+            </div>
+            <div className="unfinished-tasks" id="unfinished-tasks-div">
+              <h3>Незавершені завдання</h3>
+              <ul id="ul-finished-tasks">{this.state.listUnfinishedTasks}</ul>
+            </div>
+            {/* <div className="label-tasks">
                         <div id="label1"><span>Мітка 1</span></div>
                         <div id="label2"><span>Мітка 2</span></div>
                     </div> */}
-          <div className="finished-tasks">
-            <h3>Виконані завдання</h3>
-            <ul id="ul-unfinished-tasks">{this.state.listFinishedTasks}</ul>
+            <div className="finished-tasks">
+              <h3>Виконані завдання</h3>
+              <ul id="ul-unfinished-tasks">{this.state.listFinishedTasks}</ul>
+            </div>
           </div>
-        </div>
+        ) : (
+          <h3>Please select any project</h3>
+        )}
       </div>
     );
   }
