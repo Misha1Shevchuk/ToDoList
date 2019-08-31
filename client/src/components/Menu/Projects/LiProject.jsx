@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import ChangeProject from "../ChangeProjectForm/ChangeProject";
-import classes from "../../stylesMenu/ItemLi.module.css";
+import ChangeProject from "./ChangeProject";
+import classes from "../stylesMenu/ItemLi.module.css";
 
 export default class LiProject extends React.Component {
   constructor(props) {

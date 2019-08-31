@@ -1,6 +1,6 @@
 import React from "react";
-import MenuProjects from "./Projects/MenuProjects/MenuProjects";
-import MenuLabels from "./Labels/MenuLabels/MenuLabels";
+import MenuProjects from "./Projects/MenuProjects";
+import MenuLabels from "./Labels/MenuLabels";
 import classes from "./Menu.module.css";
 
 export default class Menu extends React.Component {

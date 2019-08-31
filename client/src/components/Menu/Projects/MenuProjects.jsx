@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import NewProjectForm from "../NewProjectForm/NewProjectForm";
-import LiProject from "../ItemProject/LiProject";
-import classes from "../../stylesMenu/MenuItems.module.css";
+import NewProjectForm from "./NewProjectForm";
+import LiProject from "./LiProject";
+import classes from "../stylesMenu/MenuItems.module.css";
 import { NavLink, BrowserRouter } from "react-router-dom";
 
 export default class MenuProjects extends React.Component {
