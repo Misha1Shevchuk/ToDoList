@@ -18,7 +18,7 @@ export default class ChangeTask extends React.Component {
     event.preventDefault();
     if (this.state.newNameTask !== "") {
       await axios
-        .post(`/change-task`, {
+        .post(`/api/change-task`, {
           id_task: this.props.element.id_task,
           task: this.state.newNameTask
         })

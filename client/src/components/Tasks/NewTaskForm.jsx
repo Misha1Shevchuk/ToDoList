@@ -18,7 +18,7 @@ export default class NewTaskForm extends React.Component {
     event.preventDefault();
     if (this.state.task !== "") {
       await axios
-        .post(`/sendtask`, {
+        .post(`/api/sendtask`, {
           newtask: this.state.task,
           id_project: this.props.activeProjectId
         })

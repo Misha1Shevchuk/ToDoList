@@ -18,7 +18,7 @@ export default class ChangeProject extends React.Component {
     event.preventDefault();
     if (this.state.newNameProject !== "") {
       await axios
-        .post(`/change-project`, {
+        .post(`/api/change-project`, {
           id_project: this.props.element.id_project,
           project: this.state.newNameProject
         })

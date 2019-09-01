@@ -18,7 +18,7 @@ export default class NewLabelsForm extends React.Component {
     event.preventDefault();
     if (this.state.label !== "") {
       await axios
-        .post(`/sendlabel`, {
+        .post(`/api/sendlabel`, {
           newlabel: this.state.label
         })
         .then(() => {

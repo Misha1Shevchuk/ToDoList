@@ -14,7 +14,7 @@ export default class ItemProject extends React.Component {
   removeProject = async event => {
     event.preventDefault();
     await axios
-      .post(`/remove-project`, {
+      .post(`/api/remove-project`, {
         id_project: this.props.element.id_project
       })
       .then(() => {
@@ -32,9 +32,7 @@ export default class ItemProject extends React.Component {
 
   render() {
     return (
-      <li
-        className={classes.item_li}
-      >
+      <li className={classes.item_li}>
         {this.state.showChangeProjectForm ? (
           <ChangeProject
             showChangeProjectForm={this.showChangeProjectForm}

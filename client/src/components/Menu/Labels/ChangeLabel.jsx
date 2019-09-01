@@ -18,7 +18,7 @@ export default class ChangeLabel extends React.Component {
     event.preventDefault();
     if (this.state.newNameLabel !== "") {
       await axios
-        .post(`/change-label`, {
+        .post(`/api/change-label`, {
           id_label: this.props.element.id_label,
           label: this.state.newNameLabel
         })

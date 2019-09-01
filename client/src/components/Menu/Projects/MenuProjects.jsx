@@ -35,7 +35,7 @@ export default class MenuProjects extends React.Component {
   componentWillMount = () => this.getList();
 
   getList = async () => {
-    await axios.post(`/projectsList`).then(response => {
+    await axios.post(`/api/projectsList`).then(response => {
       this.setState({
         list: response.data.map(p => {
           return (
@@ -45,10 +45,7 @@ export default class MenuProjects extends React.Component {
               key={p.id_project}
               to={`/project/${p.id_project}`}
             >
-              <ItemProject
-                getList={this.getList}
-                element={p}
-              />
+              <ItemProject getList={this.getList} element={p} />
             </NavLink>
           );
         })
@@ -65,7 +62,7 @@ export default class MenuProjects extends React.Component {
         </div>
         {this.state.showList ? (
           <div className={classes.item_content}>
-              <ul className={classes.menu_list}>{this.state.list}</ul>
+            <ul className={classes.menu_list}>{this.state.list}</ul>
             {this.state.showForm ? (
               <NewProjectForm
                 getList={this.getList}

@@ -26,7 +26,7 @@ export default class ItemTask extends React.Component {
   markCompleted = async event => {
     event.preventDefault();
     await axios
-      .post(`/task-checkbox-active`, {
+      .post(`/api/task-checkbox-active`, {
         id_task: this.props.element.id_task,
         is_completed: !this.state.isCompleted
       })

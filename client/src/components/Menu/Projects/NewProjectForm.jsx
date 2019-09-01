@@ -18,7 +18,7 @@ export default class NewProjectForm extends React.Component {
     event.preventDefault();
     if (this.state.project !== "") {
       await axios
-        .post(`/sendproject`, {
+        .post(`/api/sendproject`, {
           newproject: this.state.project
         })
         .then(() => {
