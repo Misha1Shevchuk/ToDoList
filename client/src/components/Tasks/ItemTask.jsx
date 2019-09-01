@@ -15,7 +15,7 @@ export default class ItemTask extends React.Component {
   removeTask = async event => {
     event.preventDefault();
     await axios
-      .post(`/remove-task`, {
+      .post(`/api/remove-task`, {
         id_task: this.props.element.id_task
       })
       .then(() => {

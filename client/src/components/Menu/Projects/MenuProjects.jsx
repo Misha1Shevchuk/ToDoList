@@ -3,7 +3,7 @@ import axios from "axios";
 import NewProjectForm from "./NewProjectForm";
 import ItemProject from "./ItemProject";
 import classes from "../stylesMenu/MenuItems.module.css";
-import { NavLink, BrowserRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default class MenuProjects extends React.Component {
   constructor() {
@@ -36,20 +36,24 @@ export default class MenuProjects extends React.Component {
 
   getList = async () => {
     await axios.post(`/api/projectsList`).then(response => {
-      this.setState({
-        list: response.data.map(p => {
-          return (
-            <NavLink
-              className={classes.link}
-              activeClassName={classes.active}
-              key={p.id_project}
-              to={`/project/${p.id_project}`}
-            >
-              <ItemProject getList={this.getList} element={p} />
-            </NavLink>
-          );
-        })
-      });
+      this.makeProjectsList(response.data);
+    });
+  };
+
+  makeProjectsList = data => {
+    this.setState({
+      list: data.map(p => {
+        return (
+          <NavLink
+            className={classes.link}
+            activeClassName={classes.active}
+            key={p.id_project}
+            to={`/project/${p.id_project}`}
+          >
+            <ItemProject getList={this.getList} element={p} />
+          </NavLink>
+        );
+      })
     });
   };
 

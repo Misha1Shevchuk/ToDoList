@@ -7,43 +7,68 @@ export default class WorkSpace extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      list: [],
       listFinishedTasks: [],
       listUnfinishedTasks: []
     };
   }
 
-  componentWillMount = () => this.getList();
+  componentDidMount = () => this.getList();
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeProjectId !== this.props.activeProjectId) {
+      this.makeListFinishedTasks(this.state.list);
+      this.makeListUnfinishedTasks(this.state.list);
+    }
+  }
 
   getList = async () => {
     await axios.post(`/api/tasksList`).then(response => {
-      this.setState({
-        listFinishedTasks: response.data.map(task => {
-          if (task.is_completed) {
-            return (
-              <ItemTask
-                getList={this.getList}
-                key={task.id_task}
-                element={task}
-              />
-            );
-          } else {
-            return null;
-          }
-        }),
-        listUnfinishedTasks: response.data.map(task => {
-          if (!task.is_completed) {
-            return (
-              <ItemTask
-                getList={this.getList}
-                key={task.id_task}
-                element={task}
-              />
-            );
-          } else {
-            return null;
-          }
-        })
-      });
+      this.setState({ list: response.data });
+      this.makeListFinishedTasks(this.state.list);
+      this.makeListUnfinishedTasks(this.state.list);
+    });
+  };
+
+  makeListFinishedTasks = data => {
+    this.setState({
+      listFinishedTasks: data.map(task => {
+        if (
+          task.is_completed &&
+          this.props.activeProjectId == task.id_project
+        ) {
+          return (
+            <ItemTask
+              getList={this.getList}
+              key={task.id_task}
+              element={task}
+            />
+          );
+        } else {
+          return null;
+        }
+      })
+    });
+  };
+
+  makeListUnfinishedTasks = data => {
+    this.setState({
+      listUnfinishedTasks: data.map(task => {
+        if (
+          !task.is_completed &&
+          this.props.activeProjectId == task.id_project
+        ) {
+          return (
+            <ItemTask
+              getList={this.getList}
+              key={task.id_task}
+              element={task}
+            />
+          );
+        } else {
+          return null;
+        }
+      })
     });
   };
 
@@ -53,7 +78,7 @@ export default class WorkSpace extends React.Component {
         <div className="add-task">
           <h3>Додати завдання</h3>
           <NewTaskForm
-            activeProjectId={this.state.activeProjectId}
+            activeProjectId={this.props.activeProjectId}
             getList={this.getList}
           />
         </div>
