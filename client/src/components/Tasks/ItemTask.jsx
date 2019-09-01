@@ -77,7 +77,7 @@ export default class ItemTask extends React.Component {
                 onClick={this.removeTask}
                 className={classes.item_delete_button}
               >
-                <img src="img/remove.svg" alt="change" />
+                <img src="img/remove.svg" alt="remove" />
               </button>
             </div>
           </div>

@@ -1,33 +1,16 @@
 import React from "react";
-import Menu from "./Menu/Menu";
-import Content from "./Tasks/Content";
 import { Route, BrowserRouter } from "react-router-dom";
 
-export default class Wrapper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.child = React.createRef();
-    this.state = {
-      activeProjectId: 0
-    };
-  }
+import Menu from "./Menu/Menu";
+import Content from "./Tasks/Content";
 
-  activeProjectId = async id => {
-    await this.setState({ activeProjectId: id });
-    await this.child.current.getList();
-  };
+const Wrapper = () => (
+  <BrowserRouter>
+    <div className="wrapper">
+      <Menu />
+      <Route path="/project/:id" component={Content} />
+    </div>
+  </BrowserRouter>
+);
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="wrapper">
-          <Menu activeProjectId={this.activeProjectId} />
-          <Content
-            activeProjectId={this.state.activeProjectId}
-            ref={this.child}
-          />
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+export default Wrapper;

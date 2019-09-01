@@ -3,7 +3,7 @@ import axios from "axios";
 import ChangeProject from "./ChangeProject";
 import classes from "../stylesMenu/ItemLi.module.css";
 
-export default class LiProject extends React.Component {
+export default class ItemProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,6 @@ export default class LiProject extends React.Component {
     return (
       <li
         className={classes.item_li}
-        onClick={() => this.props.selectProject(this.props.element.id_project)}
       >
         {this.state.showChangeProjectForm ? (
           <ChangeProject
