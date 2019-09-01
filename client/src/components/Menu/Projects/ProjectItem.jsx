@@ -3,7 +3,10 @@ import axios from "axios";
 import ChangeProject from "./ChangeProject";
 import classes from "../stylesMenu/ItemLi.module.css";
 
-export default class ItemProject extends React.Component {
+import ChangeImg from "../../svg/ChangeImg";
+import DeleteImg from "../../svg/DeleteImg";
+
+export default class ProjectItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,13 +53,13 @@ export default class ItemProject extends React.Component {
                 onClick={this.showChangeProjectForm}
                 className={classes.item_change_button}
               >
-                <img src="img/pencil.svg" alt="change" />
+                <ChangeImg />
               </button>
               <button
                 onClick={this.removeProject}
                 className={classes.item_delete_button}
               >
-                <img src="img/remove.svg" alt="change" />
+                <DeleteImg />
               </button>
             </div>
           </div>

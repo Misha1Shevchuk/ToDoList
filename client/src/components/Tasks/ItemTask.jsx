@@ -3,6 +3,9 @@ import axios from "axios";
 import classes from "./ItemTask.module.css";
 import ChangeTask from "./ChangeTask";
 
+import ChangeImg from "../svg/ChangeImg";
+import DeleteImg from "../svg/DeleteImg";
+
 export default class ItemTask extends React.Component {
   constructor(props) {
     super(props);
@@ -71,13 +74,13 @@ export default class ItemTask extends React.Component {
                 onClick={this.showChangeTaskForm}
                 className={classes.item_change_button}
               >
-                <img src="img/pencil.svg" alt="change" />
+                <ChangeImg />
               </button>
               <button
                 onClick={this.removeTask}
                 className={classes.item_delete_button}
               >
-                <img src="img/remove.svg" alt="remove" />
+                <DeleteImg />
               </button>
             </div>
           </div>

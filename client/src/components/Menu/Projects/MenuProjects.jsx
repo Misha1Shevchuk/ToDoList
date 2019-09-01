@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import NewProjectForm from "./NewProjectForm";
-import ItemProject from "./ItemProject";
+import ProjectItem from "./ProjectItem";
 import classes from "../stylesMenu/MenuItems.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -50,7 +50,7 @@ export default class MenuProjects extends React.Component {
             key={p.id_project}
             to={`/project/${p.id_project}`}
           >
-            <ItemProject getList={this.getList} element={p} />
+            <ProjectItem getList={this.getList} element={p} />
           </NavLink>
         );
       })
