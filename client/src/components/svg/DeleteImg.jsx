@@ -1,7 +1,8 @@
 import React from "react";
 
-const DeleteImg = () => (
+const DeleteImg = props => (
   <svg
+      className={props.className}
     enableBackground="new 0 0 32 32"
     height="18px"
     id="Layer_1"

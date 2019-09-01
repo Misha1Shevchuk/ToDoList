@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import classes from "./ItemTask.module.css";
-import ChangeTask from "./ChangeTask";
+import ChangeTask from "../ChangeTaskForm/ChangeTask";
 
-import ChangeImg from "../svg/ChangeImg";
-import DeleteImg from "../svg/DeleteImg";
+import ChangeImg from "../../svg/ChangeImg";
+import DeleteImg from "../../svg/DeleteImg";
 
 export default class ItemTask extends React.Component {
   constructor(props) {
@@ -57,14 +57,14 @@ export default class ItemTask extends React.Component {
           />
         ) : (
           <div className={classes.item}>
-            <input
-              onClick={this.markCompleted}
-              defaultChecked={this.state.isCompleted}
-              type="checkbox"
-              id={`checkbox_${this.props.element.id_task}`}
-              className={classes.checkbox}
-            />
-            <label htmlFor={`checkbox_${this.props.element.id_task}`}></label>
+              <input
+                  onClick={this.markCompleted}
+                  defaultChecked={this.state.isCompleted}
+                  type="checkbox"
+                  id={`checkbox_${this.props.element.id_task}`}
+                  className={classes.checkbox}
+              />
+              <label htmlFor={`checkbox_${this.props.element.id_task}`}></label>
             <span className={classes.item_name}>
               {" "}
               {this.props.element.task}
@@ -74,13 +74,13 @@ export default class ItemTask extends React.Component {
                 onClick={this.showChangeTaskForm}
                 className={classes.item_change_button}
               >
-                <ChangeImg />
+                <ChangeImg className={classes.img}/>
               </button>
               <button
                 onClick={this.removeTask}
                 className={classes.item_delete_button}
               >
-                <DeleteImg />
+                <DeleteImg className={classes.img}/>
               </button>
             </div>
           </div>

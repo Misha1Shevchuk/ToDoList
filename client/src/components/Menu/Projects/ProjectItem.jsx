@@ -35,7 +35,7 @@ export default class ProjectItem extends React.Component {
 
   render() {
     return (
-      <li className={classes.item_li}>
+      <div className={classes.item_li}>
         {this.state.showChangeProjectForm ? (
           <ChangeProject
             showChangeProjectForm={this.showChangeProjectForm}
@@ -53,18 +53,18 @@ export default class ProjectItem extends React.Component {
                 onClick={this.showChangeProjectForm}
                 className={classes.item_change_button}
               >
-                <ChangeImg />
+                <ChangeImg className={classes.img}/>
               </button>
               <button
                 onClick={this.removeProject}
                 className={classes.item_delete_button}
               >
-                <DeleteImg />
+                <DeleteImg className={classes.img}/>
               </button>
             </div>
           </div>
         )}
-      </li>
+      </div>
     );
   }
 }

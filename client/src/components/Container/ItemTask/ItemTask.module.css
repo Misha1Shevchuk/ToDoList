@@ -1,7 +1,6 @@
 /* Item */
 
 .item_li {
-  min-height: 32px;
   padding: 5px 0;
   margin-bottom: 1px;
 }
@@ -13,14 +12,13 @@
 .item {
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-content: center;
 }
 
 .item_name {
   margin-left: 30px;
   display: block;
-  width: 80%;
+  width: 95%;
 }
 
 /* Buttons */
@@ -28,8 +26,7 @@
 .buttons_block {
   display: flex;
   justify-content: space-between;
-  width: 5%;
-  min-width: 47px;
+  width: 60px;
 }
 
 .item_change_button,
@@ -54,10 +51,15 @@
   opacity: 1;
 }
 
-.item_change_button > img,
-.item_delete_button > img {
+.item_change_button > .img,
+.item_delete_button > .img {
   height: 100%;
-}
+  fill: #727478;
+
+}.item_change_button > .img:hover,
+ .item_delete_button > .img:hover {
+   fill: #000;
+ }
 
 /* Checkbox */
 
@@ -75,8 +77,6 @@
 .checkbox + label:before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 20px;
   height: 20px;
   border-radius: 90%;
@@ -88,17 +88,18 @@
 input:checked + label:after {
   content: "✓";
   position: absolute;
-  left: 4px;
-  top: 2px;
-  font-size: 15px;
-  color: #797878;
+  left: 1px;
+  top: -2px;
+  font-size: 20px;
+  color: #874947;
   font-weight: bold;
 }
 
 input:checked + label:before {
-  background-color: #d4cdcd;
+  background-color: #efe8e8;
+  border: 1px solid #ecb9ad;
 }
 
 input:hover + label:before {
-  background-color: #c3c3c3;
+  background-color: #d4cdcd;
 }

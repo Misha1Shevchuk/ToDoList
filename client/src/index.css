@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap&subset=cyrillic');
+
 *,
 *::after,
 *::before {
@@ -5,4 +7,33 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+}
+
+li {
+  list-style-type: none;
+}
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: silver;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: silver;
 }

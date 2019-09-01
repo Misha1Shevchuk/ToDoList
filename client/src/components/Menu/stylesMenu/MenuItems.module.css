@@ -42,6 +42,7 @@
 }
 
 .menu_list {
+  padding-left: 10px;
   overflow: auto;
   max-height: 300px;
   border-bottom: 1px solid #e2e1e1;
@@ -49,6 +50,7 @@
 }
 
 .new_item_button {
+  font-size: 1em;
   width: 100%;
   padding: 10px 0;
   text-align: left;
@@ -69,4 +71,5 @@
 .active {
   display: block;
   background-color: #fff;
+  font-weight: bold;
 }

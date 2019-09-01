@@ -1,7 +1,8 @@
 import React from "react";
 
-const ChangeImg = () => (
+const ChangeImg = props => (
   <svg
+      className={props.className}
     height="18px"
     id="Layer_1"
     version="1.1"

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import classes from "../Menu/stylesMenu/ChangeItemForm.module.css";
+import classes from "../../Menu/stylesMenu/ChangeItemForm.module.css";
 
 export default class ChangeTask extends React.Component {
   constructor(props) {

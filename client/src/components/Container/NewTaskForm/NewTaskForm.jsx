@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import classes from "../Menu/stylesMenu/NewItemForm.module.css";
+import classes from "../../Menu/stylesMenu/NewItemForm.module.css";
 
 export default class NewTaskForm extends React.Component {
   constructor(props) {

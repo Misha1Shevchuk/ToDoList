@@ -2,7 +2,6 @@
   min-height: 32px;
   padding: 5px;
   margin-bottom: 1px;
-  margin-left: 15px;
 }
 
 .item_li:hover {
@@ -10,7 +9,6 @@
 }
 
 .item {
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -26,8 +24,7 @@
 .buttons_block {
   display: flex;
   justify-content: space-between;
-  width: 15%;
-  min-width: 47px;
+  width: 50px;
 }
 
 .item_change_button,
@@ -39,7 +36,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.4s linear;
+  transition: all 0.2s linear;
 }
 
 .item_change_button:hover,
@@ -52,7 +49,14 @@
   opacity: 1;
 }
 
-.item_change_button > img,
-.item_delete_button > img {
+.item_change_button > .img,
+.item_delete_button > .img {
   height: 100%;
+  fill: #727478;
+
+}.item_change_button > .img:hover,
+.item_delete_button > .img:hover {
+  fill: #000;
 }
+
+
