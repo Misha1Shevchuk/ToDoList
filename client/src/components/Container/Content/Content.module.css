@@ -1,14 +1,28 @@
-.img {
-    display: block;
-    margin: 100px auto;
-    fill: #ac4e4e;
+.content {
+  margin-right: 20%;
+  flex: 2.4;
+  border: 1px solid #f0eded;
+  background-color: #fff;
+  padding-bottom: 50px;
+  min-height: 50vh;
 }
 
-.content {
-    margin-right: 20%;
-    flex: 2.4;
-    border: 1px solid rgb(240, 237, 237);
-    background-color: #fff;
-    padding-bottom: 250px;
-    min-height: 50vh;
+.img {
+  display: block;
+  margin: 100px auto;
+  fill: #ac4e4e;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    margin: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .content {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
 }

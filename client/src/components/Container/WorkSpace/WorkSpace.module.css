@@ -1,8 +1,14 @@
 .work_space {
-    margin: 30px;
+  margin: 30px;
 }
+
 .work_space h3 {
-    margin: 15px 0;
-    user-select: none;
-    font-weight: 500;
+  margin: 15px 0;
+  user-select: none;
+  font-weight: 500;
+}
+
+.list_finished_tasks > li {
+  color: #6d6363;
+  text-decoration: line-through;
 }

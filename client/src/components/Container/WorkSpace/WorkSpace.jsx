@@ -93,7 +93,7 @@ export default class WorkSpace extends React.Component {
             </div> */}
         <div>
           <h3>Виконані завдання</h3>
-          <ul>{this.state.listFinishedTasks}</ul>
+          <ul className={classes.list_finished_tasks}>{this.state.listFinishedTasks}</ul>
         </div>
       </div>
     );

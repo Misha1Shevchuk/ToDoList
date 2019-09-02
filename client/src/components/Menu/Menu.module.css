@@ -4,3 +4,28 @@
   padding-top: 20px;
   flex: 1;
 }
+
+@media (max-width: 1000px) {
+  .menu {
+    padding-left: 40px;
+    margin: 0;
+    background-color: #fafafa;
+    height: 80vh;
+    border: 1px solid #d3cfcf;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 750px) {
+  .menu {
+    padding-left: 5px;
+    width: 100%;
+    position: absolute;
+    right: 100vw;
+    transition: right 0.2s linear;
+    -webkit-transition: right 0.2s linear;
+    -moz-transition: right 0.2s linear;
+    -ms-transition: right 0.2s linear;
+    -o-transition: right 0.2s linear;
+  }
+}
