@@ -36,7 +36,7 @@ export default class WorkSpace extends React.Component {
       listFinishedTasks: data.map(task => {
         if (
           task.is_completed &&
-          this.props.activeProjectId == task.id_project
+          this.props.activeProjectId === task.id_project.toString()
         ) {
           return (
             <ItemTask
@@ -57,7 +57,7 @@ export default class WorkSpace extends React.Component {
       listUnfinishedTasks: data.map(task => {
         if (
           !task.is_completed &&
-          this.props.activeProjectId == task.id_project
+          this.props.activeProjectId === task.id_project.toString()
         ) {
           return (
             <ItemTask
@@ -76,7 +76,7 @@ export default class WorkSpace extends React.Component {
   render() {
     return (
       <div className={classes.work_space}>
-        <div >
+        <div>
           <h3>Додати завдання</h3>
           <NewTaskForm
             activeProjectId={this.props.activeProjectId}
@@ -91,7 +91,7 @@ export default class WorkSpace extends React.Component {
                 <div id="label1"><span>Мітка 1</span></div>
                 <div id="label2"><span>Мітка 2</span></div>
             </div> */}
-        <div >
+        <div>
           <h3>Виконані завдання</h3>
           <ul>{this.state.listFinishedTasks}</ul>
         </div>

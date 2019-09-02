@@ -55,11 +55,11 @@
 .item_delete_button > .img {
   height: 100%;
   fill: #727478;
-
-}.item_change_button > .img:hover,
- .item_delete_button > .img:hover {
-   fill: #000;
- }
+}
+.item_change_button > .img:hover,
+.item_delete_button > .img:hover {
+  fill: #000;
+}
 
 /* Checkbox */
 
@@ -85,14 +85,22 @@
   transition: 0.2s;
 }
 
+/* checked symbol */
 input:checked + label:after {
-  content: "✓";
+  content: "";
   position: absolute;
-  left: 1px;
-  top: -2px;
-  font-size: 20px;
-  color: #874947;
-  font-weight: bold;
+  left: 5px;
+  top: 6px;
+  width: 10px;
+  height: 5px;
+  border-radius: 1px;
+  border-left: 2px solid #874947;
+  border-bottom: 2px solid #874947;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 input:checked + label:before {
