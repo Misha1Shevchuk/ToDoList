@@ -16,11 +16,11 @@ export default class ChangeProject extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    if (this.state.newNameProject !== "") {
+    if (this.state.newNameProject.trim() !== "") {
       await axios
         .post(`/api/change-project`, {
           id_project: this.props.element.id_project,
-          project: this.state.newNameProject
+          project: this.state.newNameProject.replace(/\s+/g,' ').trim()
         })
         .then(() => {
           this.props.showChangeProjectForm();

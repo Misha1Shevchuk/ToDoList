@@ -16,10 +16,10 @@ export default class NewTaskForm extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    if (this.state.task !== "") {
+    if (this.state.task.trim() !== "") {
       await axios
         .post(`/api/sendtask`, {
-          newtask: this.state.task,
+          newtask: this.state.task.replace(/\s+/g,' ').trim(),
           id_project: this.props.activeProjectId
         })
         .then(() => {

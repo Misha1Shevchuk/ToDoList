@@ -7,6 +7,18 @@ import ChangeImg from "../../svg/ChangeImg";
 import DeleteImg from "../../svg/DeleteImg";
 
 export default class ItemTask extends React.Component {
+  markCompleted = async event => {
+    event.preventDefault();
+    await axios
+        .post(`/api/task-checkbox-active`, {
+          id_task: this.props.element.id_task,
+          is_completed: !this.state.isCompleted
+        })
+  .then(() => {
+      this.props.getList();
+    });
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,18 +32,6 @@ export default class ItemTask extends React.Component {
     await axios
       .post(`/api/remove-task`, {
         id_task: this.props.element.id_task
-      })
-      .then(() => {
-        this.props.getList();
-      });
-  };
-
-  markCompleted = async event => {
-    event.preventDefault();
-    await axios
-      .post(`/api/task-checkbox-active`, {
-        id_task: this.props.element.id_task,
-        is_completed: !this.state.isCompleted
       })
       .then(() => {
         this.props.getList();

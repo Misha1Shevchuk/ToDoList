@@ -1,16 +1,15 @@
 import React from "react";
 import Header from "./components/Header/Header";
 import Wrapper from "./components/Wrapper";
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => (
-<BrowserRouter>
-<div>
+  <BrowserRouter>
+    <div>
       <Header />
       <Wrapper />
     </div>
-    </BrowserRouter>
-
+  </BrowserRouter>
 );
 
 export default App;

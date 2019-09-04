@@ -9,14 +9,14 @@ module.exports = {
     app.post("/api/sendtask", jsonParser, (req, res) => {
       if (!req.body) return res.sendStatus(400);
       methodsDB.insertNewTask(req.body);
-      methodsDB.getTasks(res);
+      res.sendStatus(200);
     });
 
     // When sent form newProject:
     app.post("/api/sendproject", jsonParser, (req, res) => {
       if (!req.body) return res.sendStatus(400);
       methodsDB.insertNewProject(req.body.newproject);
-      methodsDB.getProjects(res);
+      res.sendStatus(200);
     });
 
     // When sent form newLabel:
@@ -24,12 +24,12 @@ module.exports = {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.insertNewLabel(req.body.newlabel);
-      methodsDB.getLabels(res);
+      res.sendStatus(200);
     });
 
     // Get tasks List
-    app.post("/api/tasksList", (req, res) => {
-      methodsDB.getTasks(res);
+    app.post("/api/tasksList", jsonParser, (req, res) => {
+      methodsDB.getTasks(req.body, res);
     });
 
     // Get projects List
@@ -47,7 +47,7 @@ module.exports = {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.updateTaskIsCompleted(req.body);
-      methodsDB.getTasks(res);
+      res.sendStatus(200);
     });
 
     // Remove task
@@ -55,7 +55,7 @@ module.exports = {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.removeTask(req.body);
-      methodsDB.getTasks(res);
+      res.sendStatus(200);
     });
 
     // Remove project
@@ -95,7 +95,7 @@ module.exports = {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.changeTaskName(req.body);
-      methodsDB.getTasks(res);
+      res.sendStatus(200);
     });
   }
 };

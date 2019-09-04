@@ -16,10 +16,10 @@ export default class NewProjectForm extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    if (this.state.project !== "") {
+    if (this.state.project.trim() !== "") {
       await axios
         .post(`/api/sendproject`, {
-          newproject: this.state.project
+          newproject: this.state.project.replace(/\s+/g,' ').trim()
         })
         .then(() => {
           this.clearForm();

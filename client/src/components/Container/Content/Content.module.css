@@ -11,6 +11,12 @@
   display: block;
   margin: 100px auto;
   fill: #ac4e4e;
+  animation: color1 3s linear;
+  animation-iteration-count:infinite;
+}
+
+@keyframes color1 {
+  70% {fill: black}
 }
 
 @media (max-width: 1000px) {
