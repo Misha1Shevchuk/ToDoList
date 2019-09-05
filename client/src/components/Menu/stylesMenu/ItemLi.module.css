@@ -53,10 +53,14 @@
 .item_delete_button > .img {
   height: 100%;
   fill: #727478;
-
-}.item_change_button > .img:hover,
+}
+.item_change_button > .img:hover,
 .item_delete_button > .img:hover {
   fill: #000;
 }
 
-
+@media (max-width: 750px) {
+  * {
+    cursor: default;
+  }
+}
