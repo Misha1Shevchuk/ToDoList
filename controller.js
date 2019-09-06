@@ -1,26 +1,25 @@
 // Import file with methods for work to DB
 const express = require("express");
 const methodsDB = require("./methodsDB");
-const jsonParser = express.json();
 
 module.exports = {
   configure: app => {
     // When sent form newTask:
-    app.post("/api/sendtask", jsonParser, (req, res) => {
+    app.post("/sendtask", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       methodsDB.insertNewTask(req.body);
       res.sendStatus(200);
     });
 
     // When sent form newProject:
-    app.post("/api/sendproject", jsonParser, (req, res) => {
+    app.post("/sendproject", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       methodsDB.insertNewProject(req.body.newproject);
       res.sendStatus(200);
     });
 
     // When sent form newLabel:
-    app.post("/api/sendlabel", jsonParser, (req, res) => {
+    app.post("/sendlabel", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.insertNewLabel(req.body.newlabel);
@@ -28,22 +27,22 @@ module.exports = {
     });
 
     // Get tasks List
-    app.post("/api/tasksList", jsonParser, (req, res) => {
+    app.post("/tasksList", (req, res) => {
       methodsDB.getTasks(req.body, res);
     });
 
     // Get projects List
-    app.post("/api/projectsList", (req, res) => {
+    app.post("/projectsList", (req, res) => {
       methodsDB.getProjects(res);
     });
 
     // Get labels List
-    app.post("/api/labelsList", (req, res) => {
+    app.post("/labelsList", (req, res) => {
       methodsDB.getLabels(res);
     });
 
     // When task checkbox active
-    app.post("/api/task-checkbox-active", jsonParser, (req, res) => {
+    app.post("/task-checkbox-active", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.updateTaskIsCompleted(req.body);
@@ -51,7 +50,7 @@ module.exports = {
     });
 
     // Remove task
-    app.post("/api/remove-task", jsonParser, (req, res) => {
+    app.post("/remove-task", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.removeTask(req.body);
@@ -59,7 +58,7 @@ module.exports = {
     });
 
     // Remove project
-    app.post("/api/remove-project", jsonParser, (req, res) => {
+    app.post("/remove-project", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.removeProject(req.body);
@@ -67,7 +66,7 @@ module.exports = {
     });
 
     // Remove label
-    app.post("/api/remove-label", jsonParser, (req, res) => {
+    app.post("/remove-label", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.removeLabel(req.body);
@@ -75,7 +74,7 @@ module.exports = {
     });
 
     // Change Project
-    app.post("/api/change-project", jsonParser, (req, res) => {
+    app.post("/change-project", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.changeProjectName(req.body);
@@ -83,7 +82,7 @@ module.exports = {
     });
 
     // Change Label
-    app.post("/api/change-label", jsonParser, (req, res) => {
+    app.post("/change-label", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.changeLabelName(req.body);
@@ -91,7 +90,7 @@ module.exports = {
     });
 
     // Change Task
-    app.post("/api/change-task", jsonParser, (req, res) => {
+    app.post("/change-task", (req, res) => {
       if (!req.body) return res.sendStatus(400);
       console.log(req.body);
       methodsDB.changeTaskName(req.body);
