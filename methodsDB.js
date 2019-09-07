@@ -42,7 +42,7 @@ module.exports.insertNewProject = newProject => {
 
 // Get projects from DB
 module.exports.getProjects = res => {
-    connection.query("SELECT * FROM project", function (err, rows, fields) {
+    connection.query("SELECT * FROM project", (err, rows, fields) => {
         // console.log(rows);
         res.send(rows);
     });

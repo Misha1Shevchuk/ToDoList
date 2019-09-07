@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 // Import Routes
 const authRoute = require('./routes/auth');
+const postRoute = require('./routes/posts');
 // Import Controller
 const controller = require("./controller");
 controller.configure(app);
@@ -17,7 +18,9 @@ app.get("*", (req, res) => {
 app.use(express.json());
 // Route Middlevares
 app.use('/api/user', authRoute);
-app.use('/api', controller);
+
+/* HERE IS I HAVE AN ERROR*/
+app.use('/api/posts', postRoute);
 
 // listening application on port
 let server = app.listen(process.env.PORT || 5000, () => {
