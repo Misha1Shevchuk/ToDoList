@@ -2,8 +2,6 @@ const router = require("express").Router();
 const verify = require("./verifyToken");
 const methodsDB = require("./methodsDB");
 
-/* NEED TO ADD CHECH ID_USER INTO PROJECTS */
-
 router.get("/test", verify, (req, res) => {
   res.send(req.user);
 });
@@ -37,7 +35,7 @@ router.post("/tasksList", verify, (req, res) => {
 
 // Get projects List
 router.post("/projectsList", verify, (req, res) => {
-  methodsDB.getProjects(res);
+  methodsDB.getProjects(req, res);
 });
 
 // Get labels List

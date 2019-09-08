@@ -42,11 +42,15 @@ module.exports.insertNewProject = newProject => {
 };
 
 // Get projects from DB
-module.exports.getProjects = res => {
-  dbConnection.query("SELECT * FROM project", (err, rows, fields) => {
-    // console.log(rows);
-    res.send(rows);
-  });
+module.exports.getProjects = (req, res) => {
+  dbConnection.query(
+    "SELECT * FROM project WHERE id_user = ?",
+    req.user._id,
+    (err, rows, fields) => {
+      // console.log(rows);
+      res.send(rows);
+    }
+  );
 };
 
 // Insert new label to DB
