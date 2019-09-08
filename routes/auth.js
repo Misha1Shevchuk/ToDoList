@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const user = require("./userRegister");
 const jwt = require("jsonwebtoken");
-const {dbConnection} = require("../configDB");
+const { dbConnection } = require("../configDB");
 // const connection = configDB.connection;
 const bcrypt = require("bcryptjs");
 // Import validation
