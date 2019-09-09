@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 import classes from "./Header.module.css";
 
@@ -7,7 +7,8 @@ class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      btn: ""
+      btn: "",
+      redirect: false
     };
   }
 

@@ -1,10 +1,8 @@
 const router = require("express").Router();
-const user = require("./userRegister");
 const jwt = require("jsonwebtoken");
-const { dbConnection } = require("../configDB");
-// const connection = configDB.connection;
 const bcrypt = require("bcryptjs");
-// Import validation
+const user = require("./userRegister");
+const { dbConnection } = require("../configDB");
 const { registerValidation, loginValidation } = require("./validation");
 
 // REGISTER *************
@@ -32,9 +30,12 @@ router.post("/register", async (req, res) => {
 
 // LOGIN *************
 router.post("/login", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+
   // Validate data before login user
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+
   //   Checking if the user is already in the database
   dbConnection.query(
     "SELECT * FROM user WHERE email = ?",
