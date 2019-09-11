@@ -7,21 +7,21 @@ router.get("/test", verify, (req, res) => {
 });
 
 // When sent form newTask:
-router.post("/sendtask", verify, (req, res) => {
+router.post("/sendtask", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   methodsDB.insertNewTask(req.body);
   res.sendStatus(200);
 });
 
 // When sent form newProject:
-router.post("/sendproject", verify, (req, res) => {
+router.post("/sendproject", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   methodsDB.insertNewProject(req.body.newproject);
   res.sendStatus(200);
 });
 
 // When sent form newLabel:
-router.post("/sendlabel", verify, (req, res) => {
+router.post("/sendlabel", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.insertNewLabel(req.body.newlabel);
@@ -29,22 +29,23 @@ router.post("/sendlabel", verify, (req, res) => {
 });
 
 // Get tasks List
-router.post("/tasksList", verify, (req, res) => {
+router.post("/tasksList", (req, res) => {
   methodsDB.getTasks(req.body, res);
 });
 
 // Get projects List
 router.post("/projectsList", verify, (req, res) => {
+  // console.log(req.headers);
   methodsDB.getProjects(req, res);
 });
 
 // Get labels List
-router.post("/labelsList", verify, (req, res) => {
+router.post("/labelsList", (req, res) => {
   methodsDB.getLabels(res);
 });
 
 // When task checkbox active
-router.post("/task-checkbox-active", verify, (req, res) => {
+router.post("/task-checkbox-active", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.updateTaskIsCompleted(req.body);
@@ -52,7 +53,7 @@ router.post("/task-checkbox-active", verify, (req, res) => {
 });
 
 // Remove task
-router.post("/remove-task", verify, (req, res) => {
+router.post("/remove-task", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.removeTask(req.body);
@@ -60,7 +61,7 @@ router.post("/remove-task", verify, (req, res) => {
 });
 
 // Remove project
-router.post("/remove-project", verify, (req, res) => {
+router.post("/remove-project", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.removeProject(req.body);
@@ -68,7 +69,7 @@ router.post("/remove-project", verify, (req, res) => {
 });
 
 // Remove label
-router.post("/remove-label", verify, (req, res) => {
+router.post("/remove-label", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.removeLabel(req.body);
@@ -76,7 +77,7 @@ router.post("/remove-label", verify, (req, res) => {
 });
 
 // Change Project
-router.post("/change-project", verify, (req, res) => {
+router.post("/change-project", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.changeProjectName(req.body);
@@ -84,7 +85,7 @@ router.post("/change-project", verify, (req, res) => {
 });
 
 // Change Label
-router.post("/change-label", verify, (req, res) => {
+router.post("/change-label", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.changeLabelName(req.body);
@@ -92,7 +93,7 @@ router.post("/change-label", verify, (req, res) => {
 });
 
 // Change Task
-router.post("/change-task", verify, (req, res) => {
+router.post("/change-task", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
   methodsDB.changeTaskName(req.body);

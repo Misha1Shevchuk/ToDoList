@@ -7,16 +7,18 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       email: "",
       password: "",
-      name: "",
       redirect: false
     };
     this.sign = this.sign.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  sign = async () => {
+  sign = async event => {
+    event.preventDefault();
+    console.log(this.state);
     if (this.state.email && this.state.password) {
       await axios
         .post(`http://localhost:5000/api/user/register`, {
@@ -25,9 +27,7 @@ export default class Login extends React.Component {
           password: this.state.password
         })
         .then(response => {
-          console.log(response);
           if (response) {
-            sessionStorage.setItem("userData", response);
             this.setState({ redirect: true });
           } else {
             console.log("Login error");
@@ -36,43 +36,45 @@ export default class Login extends React.Component {
     }
   };
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
   }
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={"/"} />;
+      return <Redirect to={"/login"} />;
     }
 
-    if (sessionStorage.getItem("userData")) {
-      return <Redirect to={"/"} />;
-    }
     return (
       <div className={classes.window}>
-        <div className={classes.container}>
-          <h3>Login page</h3>
+        <form className={classes.container} onSubmit={this.sign}>
+          <h3>Register page</h3>
           <input
             type="text"
             name="name"
             placeholder="Name"
             onChange={this.onChange}
+            value={this.state.name}
+            minLength="5"
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
             onChange={this.onChange}
+            value={this.state.email}
           />
           <input
-            type="password"
+            type="text"
             name="password"
             placeholder="Пароль"
             minLength="6"
             onChange={this.onChange}
+            value={this.state.password}
           />
-          <input type="submit" value="Sign" onClick={this.sign} />
-        </div>
+          <input type="submit" value="Sign" />
+        </form>
         <NavLink to="/login">Login</NavLink>
       </div>
     );

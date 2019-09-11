@@ -9,10 +9,10 @@ const { registerValidation, loginValidation } = require("./validation");
 router.post("/register", async (req, res) => {
   if (!req.body) return res.sendStatus(400);
 
+  console.log(req.body);
   // Validate data before add a new user
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
   //   Checking if the user is already in the database
   dbConnection.query(
     "SELECT * FROM user WHERE email = ?",
@@ -31,6 +31,7 @@ router.post("/register", async (req, res) => {
 // LOGIN *************
 router.post("/login", (req, res) => {
   if (!req.body) return res.sendStatus(400);
+  console.log(req.body);
 
   // Validate data before login user
   const { error } = loginValidation(req.body);

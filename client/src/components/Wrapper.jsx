@@ -16,9 +16,7 @@ export default class Wrapper extends React.Component {
   }
 
   componentWillMount() {
-    if (sessionStorage.getItem("userData")) {
-      console.log("Show projects");
-    } else {
+    if (!sessionStorage.getItem("userData")) {
       this.setState({ redirect: true });
     }
   }

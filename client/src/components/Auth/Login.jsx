@@ -15,7 +15,8 @@ export default class Login extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  login = async () => {
+  login = async event => {
+    event.preventDefault();
     if (this.state.email && this.state.password) {
       await axios
         .post(`http://localhost:5000/api/user/login`, {
@@ -23,9 +24,8 @@ export default class Login extends React.Component {
           password: this.state.password
         })
         .then(response => {
-          console.log(response);
           if (response) {
-            sessionStorage.setItem("userData", response);
+            sessionStorage.setItem("userData", response.data);
             this.setState({ redirect: true });
           } else {
             console.log("Login error");
@@ -49,23 +49,25 @@ export default class Login extends React.Component {
 
     return (
       <div className={classes.window}>
-        <div className={classes.container}>
+        <form className={classes.container} onSubmit={this.login}>
           <h3>Login page</h3>
           <input
             type="email"
             name="email"
+            value={this.state.email}
             placeholder="Email"
             onChange={this.onChange}
           />
           <input
-            type="password"
+            type="text"
             name="password"
+            value={this.state.pass}
             placeholder="Пароль"
             minLength="6"
             onChange={this.onChange}
           />
-          <input type="submit" value="Login" onClick={this.login} />
-        </div>
+          <input type="submit" value="Login" />
+        </form>
         <NavLink to="/sign">Registration</NavLink>
       </div>
     );

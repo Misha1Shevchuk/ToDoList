@@ -35,7 +35,14 @@ export default class MenuProjects extends React.Component {
   componentWillMount = () => this.getList();
 
   getList = async () => {
-    await axios.post(`/api/projectsList`).then(response => {
+    let authToken = sessionStorage.getItem("userData");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": authToken
+      }
+    };
+    await axios.post("/api/projectsList", null, config).then(response => {
       this.makeProjectsList(response.data);
     });
   };
