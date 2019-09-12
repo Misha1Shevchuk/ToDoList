@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
 // Import Routes
 const authRoute = require("./routes/auth");
 const todolistRoute = require("./routes/todolist");
 
 //Middleware
 app.use(express.json());
+app.use(cors());
 // Route Middlevares
 app.use("/api/", todolistRoute);
 app.use("/api/user", authRoute);
