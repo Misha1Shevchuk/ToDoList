@@ -17,11 +17,21 @@ export default class NewTaskForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.task.trim() !== "") {
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": sessionStorage.getItem("userData")
+        }
+      };
       await axios
-        .post(`/api/sendtask`, {
-          newtask: this.state.task.replace(/\s+/g,' ').trim(),
-          id_project: this.props.activeProjectId
-        })
+        .post(
+          `/api/tasks/`,
+          {
+            newtask: this.state.task.replace(/\s+/g, " ").trim(),
+            id_project: this.props.activeProjectId
+          },
+          config
+        )
         .then(() => {
           this.clearForm();
           this.props.getList();

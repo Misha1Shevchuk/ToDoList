@@ -31,6 +31,7 @@ router.post("/register", async (req, res) => {
 // LOGIN *************
 router.post("/login", (req, res) => {
   if (!req.body) return res.sendStatus(400);
+  console.log(req.headers);
   console.log(req.body);
 
   // Validate data before login user

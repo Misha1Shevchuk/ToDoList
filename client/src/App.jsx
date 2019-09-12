@@ -11,7 +11,7 @@ const App = () => (
       <Header />
       <Route exact path="/login" component={Login} />
       <Route exact path="/sign" component={Sign} />
-      <Route exact path="/" component={Wrapper} />
+      <Route path="/" component={Wrapper} />
     </div>
   </BrowserRouter>
 );

@@ -1,5 +1,6 @@
 .change_item_form {
   display: block;
+  z-index: 3;
   margin-top: 1px;
   width: 100%;
 }

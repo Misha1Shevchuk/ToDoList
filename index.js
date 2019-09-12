@@ -4,14 +4,16 @@ const path = require("path");
 const cors = require("cors");
 // Import Routes
 const authRoute = require("./routes/auth");
-const todolistRoute = require("./routes/todolist");
+const tasks = require("./routes/tasks");
+const projects = require("./routes/projects");
 
 //Middleware
 app.use(express.json());
 app.use(cors());
 // Route Middlevares
-app.use("/api/", todolistRoute);
 app.use("/api/user", authRoute);
+app.use("/api/tasks", tasks);
+app.use("/api/projects", projects);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));

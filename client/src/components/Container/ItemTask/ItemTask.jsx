@@ -9,12 +9,13 @@ import DeleteImg from "../../svg/DeleteImg";
 export default class ItemTask extends React.Component {
   markCompleted = async event => {
     event.preventDefault();
-    await axios
-        .post(`/api/task-checkbox-active`, {
-          id_task: this.props.element.id_task,
-          is_completed: !this.state.isCompleted
-        })
-  .then(() => {
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": sessionStorage.getItem("userData")
+      }
+    };
+    await axios.post(`api/tasks/check/314&1`, config).then(() => {
       this.props.getList();
     });
   };
@@ -29,10 +30,14 @@ export default class ItemTask extends React.Component {
 
   removeTask = async event => {
     event.preventDefault();
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": sessionStorage.getItem("userData")
+      }
+    };
     await axios
-      .post(`/api/remove-task`, {
-        id_task: this.props.element.id_task
-      })
+      .delete(`/api/tasks/${this.props.element.id_task}`, config)
       .then(() => {
         this.props.getList();
       });
@@ -57,14 +62,14 @@ export default class ItemTask extends React.Component {
           />
         ) : (
           <div className={classes.item}>
-              <input
-                  onClick={this.markCompleted}
-                  defaultChecked={this.state.isCompleted}
-                  type="checkbox"
-                  id={`checkbox_${this.props.element.id_task}`}
-                  className={classes.checkbox}
-              />
-              <label htmlFor={`checkbox_${this.props.element.id_task}`}></label>
+            <input
+              onClick={this.markCompleted}
+              defaultChecked={this.state.isCompleted}
+              type="checkbox"
+              id={`checkbox_${this.props.element.id_task}`}
+              className={classes.checkbox}
+            />
+            <label htmlFor={`checkbox_${this.props.element.id_task}`}></label>
             <span className={classes.item_name}>
               {" "}
               {this.props.element.task}
@@ -74,13 +79,13 @@ export default class ItemTask extends React.Component {
                 onClick={this.showChangeTaskForm}
                 className={classes.item_change_button}
               >
-                <ChangeImg className={classes.img}/>
+                <ChangeImg className={classes.img} />
               </button>
               <button
                 onClick={this.removeTask}
                 className={classes.item_delete_button}
               >
-                <DeleteImg className={classes.img}/>
+                <DeleteImg className={classes.img} />
               </button>
             </div>
           </div>

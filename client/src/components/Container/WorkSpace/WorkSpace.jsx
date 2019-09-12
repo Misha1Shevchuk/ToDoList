@@ -26,10 +26,14 @@ export default class WorkSpace extends React.Component {
   }
 
   getList = async () => {
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": sessionStorage.getItem("userData")
+      }
+    };
     await axios
-      .post(`/api/tasksList`, {
-        id_project: this.props.activeProjectId
-      })
+      .get(`/api/tasks/${this.props.activeProjectId}`, config)
       .then(response => {
         this.setState({ list: response.data });
         this.makeListFinishedTasks(this.state.list);

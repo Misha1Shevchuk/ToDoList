@@ -17,11 +17,21 @@ export default class ChangeTask extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameTask !== "") {
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": sessionStorage.getItem("userData")
+        }
+      };
       await axios
-        .post(`/api/change-task`, {
-          id_task: this.props.element.id_task,
-          task: this.state.newNameTask
-        })
+        .post(
+          `/api/tasks/change-task`,
+          {
+            id_task: this.props.element.id_task,
+            task: this.state.newNameTask
+          },
+          config
+        )
         .then(() => {
           this.props.showChangeTaskForm();
           this.props.getList();

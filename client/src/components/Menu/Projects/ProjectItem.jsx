@@ -16,10 +16,14 @@ export default class ProjectItem extends React.Component {
 
   removeProject = async event => {
     event.preventDefault();
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": sessionStorage.getItem("userData")
+      }
+    };
     await axios
-      .post(`/api/remove-project`, {
-        id_project: this.props.element.id_project
-      })
+      .delete(`/api/projects/${this.props.element.id_project}`, config)
       .then(() => {
         this.props.getList();
       });
@@ -53,13 +57,13 @@ export default class ProjectItem extends React.Component {
                 onClick={this.showChangeProjectForm}
                 className={classes.item_change_button}
               >
-                <ChangeImg className={classes.img}/>
+                <ChangeImg className={classes.img} />
               </button>
               <button
                 onClick={this.removeProject}
                 className={classes.item_delete_button}
               >
-                <DeleteImg className={classes.img}/>
+                <DeleteImg className={classes.img} />
               </button>
             </div>
           </div>

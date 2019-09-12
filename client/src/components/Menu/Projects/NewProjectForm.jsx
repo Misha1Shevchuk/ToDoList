@@ -17,10 +17,20 @@ export default class NewProjectForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.project.trim() !== "") {
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": sessionStorage.getItem("userData")
+        }
+      };
       await axios
-        .post(`/api/sendproject`, {
-          newproject: this.state.project.replace(/\s+/g,' ').trim()
-        })
+        .post(
+          `/api/projects/`,
+          {
+            newproject: this.state.project.replace(/\s+/g, " ").trim()
+          },
+          config
+        )
         .then(() => {
           this.clearForm();
           this.props.getList();
@@ -49,7 +59,7 @@ export default class NewProjectForm extends React.Component {
           className={classes.input_new_item}
           name="newproject"
           autoComplete="off"
-          placeholder="Новий проєкт"
+          placeholder="Новий проект"
         />
         <br />
         <input

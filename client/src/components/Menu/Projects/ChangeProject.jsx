@@ -17,11 +17,21 @@ export default class ChangeProject extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameProject.trim() !== "") {
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": sessionStorage.getItem("userData")
+        }
+      };
       await axios
-        .post(`/api/change-project`, {
-          id_project: this.props.element.id_project,
-          project: this.state.newNameProject.replace(/\s+/g,' ').trim()
-        })
+        .post(
+          `/api/projects/change-project`,
+          {
+            id_project: this.props.element.id_project,
+            project: this.state.newNameProject.replace(/\s+/g, " ").trim()
+          },
+          config
+        )
         .then(() => {
           this.props.showChangeProjectForm();
           this.props.getList();
@@ -41,13 +51,16 @@ export default class ChangeProject extends React.Component {
         <input
           className={classes.input_name}
           type="text"
+          name="NewProjectName"
           value={this.state.newNameProject}
           onChange={this.handleChange}
         />
         <br />
         <input
-          className={classes.button_accept}
           type="submit"
+          className={classes.button_accept}
+          onClick={this.handleSubmit}
+          name="change-project"
           value="Змінити"
         />
         <input
