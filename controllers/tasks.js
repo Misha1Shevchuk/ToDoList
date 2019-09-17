@@ -24,7 +24,7 @@ const newTask = (req, res) => {
 };
 
 const toogleActive = (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const post = [req.body.is_completed, req.body.id_task];
   const query = dbConnection.query(
     "UPDATE task SET is_completed = ? WHERE id_task = ?",

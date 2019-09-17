@@ -3,7 +3,6 @@ import { config, proxy } from "./configs";
 
 export const getProjectsList = async () => {
   return await axios.get(proxy + "/api/projects/", config).then(response => {
-    console.log(response.data);
     return response.data;
   });
 };

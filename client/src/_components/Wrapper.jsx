@@ -10,6 +10,7 @@ export default class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      a: null,
       redirect: false
     };
     this.logout = this.logout.bind(this);
@@ -36,7 +37,7 @@ export default class Wrapper extends React.Component {
       <div className={classes.wrapper}>
         <Menu />
         <Route exact path="/" component={EmptyContent} />
-        <Route exact path="/project/:id" component={Content} />
+        <Route path="/project" component={Content} />
         <button className={classes.btn_logout} onClick={this.logout}>
           Logout
         </button>

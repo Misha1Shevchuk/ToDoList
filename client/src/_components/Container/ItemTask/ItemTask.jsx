@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
 import classes from "./ItemTask.module.css";
 import ChangeTask from "../ChangeTaskForm/ChangeTask";
+import { removeTask, markTaskCompleted } from "../../../_services/TasksRequest";
 
 import ChangeImg from "../../svg/ChangeImg";
 import DeleteImg from "../../svg/DeleteImg";
@@ -9,13 +9,10 @@ import DeleteImg from "../../svg/DeleteImg";
 export default class ItemTask extends React.Component {
   markCompleted = async event => {
     event.preventDefault();
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-      }
-    };
-    await axios.post(`api/tasks/check/314&1`, config).then(() => {
+    markTaskCompleted(
+      this.props.element.id_task,
+      !this.props.element.is_completed
+    ).then(() => {
       this.props.getList();
     });
   };
@@ -30,17 +27,9 @@ export default class ItemTask extends React.Component {
 
   removeTask = async event => {
     event.preventDefault();
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-      }
-    };
-    await axios
-      .delete(`/api/tasks/${this.props.element.id_task}`, config)
-      .then(() => {
-        this.props.getList();
-      });
+    removeTask(this.props.element.id_task).then(() => {
+      this.props.getList();
+    });
   };
 
   showChangeTaskForm = () => {

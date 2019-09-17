@@ -20,7 +20,6 @@ export default class Login extends React.Component {
     if (this.state.email && this.state.password) {
       await login(this.state.email, this.state.password)
         .then(login_response => {
-          console.log(login_response);
           this.setState({ redirect: true });
         })
         .catch(err => console.log(err));

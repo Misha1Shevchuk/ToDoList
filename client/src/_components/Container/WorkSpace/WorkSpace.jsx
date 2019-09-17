@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { getTasksList } from "../../../_services/TasksRequest";
 
 import NewTaskForm from "../NewTaskForm/NewTaskForm";
 import ItemTask from "../ItemTask/ItemTask";
@@ -9,36 +9,24 @@ export default class WorkSpace extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
       listFinishedTasks: [],
       listUnfinishedTasks: []
     };
   }
 
-  componentDidMount = () => {
-    this.getList();
-  };
+  componentDidMount = () => this.getList();
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate = prevProps => {
     if (prevProps.activeProjectId !== this.props.activeProjectId) {
       this.getList();
     }
-  }
+  };
 
-  getList = async () => {
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-      }
-    };
-    await axios
-      .get(`/api/tasks/${this.props.activeProjectId}`, config)
-      .then(response => {
-        this.setState({ list: response.data });
-        this.makeListFinishedTasks(this.state.list);
-        this.makeListUnfinishedTasks(this.state.list);
-      });
+  getList = () => {
+    getTasksList(this.props.activeProjectId).then(response => {
+      this.makeListFinishedTasks(response.data);
+      this.makeListUnfinishedTasks(response.data);
+    });
   };
 
   makeListFinishedTasks = data => {
