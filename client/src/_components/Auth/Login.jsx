@@ -32,11 +32,11 @@ export default class Login extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={"/"} />;
+      return <Redirect to={"/home"} />;
     }
 
     if (localStorage.getItem("userData")) {
-      return <Redirect to={"/"} />;
+      return <Redirect to={"/home"} />;
     }
 
     return (

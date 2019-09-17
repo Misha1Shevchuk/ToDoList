@@ -45,7 +45,7 @@ export default class MenuProjects extends React.Component {
             className={classes.link}
             activeClassName={classes.active}
             key={p.id_project}
-            to={`/project/${p.id_project}`}
+            to={`/home/project/${p.id_project}`}
           >
             <ProjectItem
               getList={async () => {

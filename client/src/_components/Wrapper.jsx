@@ -10,23 +10,22 @@ export default class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      a: null,
       redirect: false
     };
     this.logout = this.logout.bind(this);
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     if (!localStorage.getItem("userData")) {
       this.setState({ redirect: true });
     }
-  }
+  };
 
-  logout() {
+  logout = () => {
     localStorage.setItem("userData", "");
     localStorage.clear();
     this.setState({ redirect: true });
-  }
+  };
 
   render() {
     if (this.state.redirect) {
@@ -36,8 +35,8 @@ export default class Wrapper extends React.Component {
     return (
       <div className={classes.wrapper}>
         <Menu />
-        <Route exact path="/" component={EmptyContent} />
-        <Route exact path="/project/:id" component={Content} />
+        <Route exact path="/home" component={EmptyContent} />
+        <Route exact path="/home/project/:id" component={Content} />
         <button className={classes.btn_logout} onClick={this.logout}>
           Logout
         </button>
