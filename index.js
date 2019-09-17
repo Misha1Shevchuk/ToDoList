@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
+// Import Routes
+const authRoute = require("./routes/auth");
+const tasks = require("./routes/tasks");
+const projects = require("./routes/projects");
 
-const controller = require("./controller");
-controller.configure(app);
+//Middleware
+app.use(express.json());
+app.use(cors());
+// Route Middlevares
+app.use("/api/user", authRoute);
+app.use("/api/tasks", tasks);
+app.use("/api/projects", projects);
 
-// serve static files from the React app
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
