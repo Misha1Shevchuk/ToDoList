@@ -8,7 +8,7 @@ export const login = async (email, password) => {
       password: password
     })
     .then(response => {
-      sessionStorage.setItem("userData", response.data);
+      localStorage.setItem("userData", response.data);
       return response.data;
     });
 };

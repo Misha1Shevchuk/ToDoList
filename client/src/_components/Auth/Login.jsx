@@ -35,7 +35,7 @@ export default class Login extends React.Component {
       return <Redirect to={"/"} />;
     }
 
-    if (sessionStorage.getItem("userData")) {
+    if (localStorage.getItem("userData")) {
       return <Redirect to={"/"} />;
     }
 
@@ -47,6 +47,7 @@ export default class Login extends React.Component {
             type="email"
             name="email"
             value={this.state.email}
+            autoComplete="user-name"
             placeholder="Email"
             onChange={this.onChange}
             className={classes.input}
@@ -54,6 +55,7 @@ export default class Login extends React.Component {
           <input
             type="password"
             name="password"
+            autoComplete="current-password"
             value={this.state.pass}
             placeholder="Пароль"
             minLength="6"

@@ -17,14 +17,14 @@ export default class Wrapper extends React.Component {
   }
 
   componentWillMount() {
-    if (!sessionStorage.getItem("userData")) {
+    if (!localStorage.getItem("userData")) {
       this.setState({ redirect: true });
     }
   }
 
   logout() {
-    sessionStorage.setItem("userData", "");
-    sessionStorage.clear();
+    localStorage.setItem("userData", "");
+    localStorage.clear();
     this.setState({ redirect: true });
   }
 
@@ -37,7 +37,7 @@ export default class Wrapper extends React.Component {
       <div className={classes.wrapper}>
         <Menu />
         <Route exact path="/" component={EmptyContent} />
-        <Route path="/project" component={Content} />
+        <Route exact path="/project/:id" component={Content} />
         <button className={classes.btn_logout} onClick={this.logout}>
           Logout
         </button>

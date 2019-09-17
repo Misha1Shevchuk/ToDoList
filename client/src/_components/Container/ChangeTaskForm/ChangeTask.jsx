@@ -20,7 +20,7 @@ export default class ChangeTask extends React.Component {
       let config = {
         headers: {
           "Content-Type": "application/json",
-          "auth-token": sessionStorage.getItem("userData")
+          "auth-token": localStorage.getItem("userData")
         }
       };
       await axios
