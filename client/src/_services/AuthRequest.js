@@ -1,29 +1,30 @@
 import axios from "axios";
-
-const proxy = "http://localhost:5000"
-const config = {
-    headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-    }
-}
+import { proxy } from "./configs";
 
 export const login = async (email, password) => {
-        return await axios
-            .post(proxy + '/api/user/login', {
-                email: email,
-                password: password
-            })
-            .then(response => {
-                sessionStorage.setItem("userData", response.data);
-                return response.data;
-            })
-}
+  return await axios
+    .post(proxy + "/api/user/login", {
+      email: email,
+      password: password
+    })
+    .then(response => {
+      sessionStorage.setItem("userData", response.data);
+      return response.data;
+    });
+};
 
-export const getList = async () => {
-    return await axios.get(proxy + "/api/projects/", config).then(response => {
-        console.log(response.data);
-        return response.data;
-        // this.makeProjectsList(response.data);
+export const sign = async (name, email, password) => {
+  return await axios
+    .post(proxy + "/api/user/register", {
+      name: name,
+      email: email,
+      password: password
+    })
+    .then(response => {
+      if (response) {
+        return response;
+      } else {
+        return null;
+      }
     });
 };

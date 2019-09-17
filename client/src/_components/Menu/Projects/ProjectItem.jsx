@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
 import ChangeProject from "./ChangeProject";
 import classes from "../stylesMenu/ItemLi.module.css";
 
 import ChangeImg from "../../svg/ChangeImg";
 import DeleteImg from "../../svg/DeleteImg";
+import { removeProject } from "../../../_services/ProjectsRequest";
 
 export default class ProjectItem extends React.Component {
   constructor(props) {
@@ -16,17 +16,9 @@ export default class ProjectItem extends React.Component {
 
   removeProject = async event => {
     event.preventDefault();
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-      }
-    };
-    await axios
-      .delete(`/api/projects/${this.props.element.id_project}`, config)
-      .then(() => {
-        this.props.getList();
-      });
+    removeProject(this.props.element.id_project).then(() => {
+      this.props.getList();
+    });
   };
 
   showChangeProjectForm = () => {

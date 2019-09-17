@@ -26,16 +26,19 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = (req, res) => {
   if (!req.body) return res.sendStatus(400);
+  console.log(req.headers);
+  console.log(req.body);
 
   // Validate data before login user
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   //   Checking if the user is already in the database
-  dbConnection.query(
+  let query = dbConnection.query(
     "SELECT * FROM user WHERE email = ?",
     req.body.email,
     async (err, rows, fields) => {
+      console.log(err);
       if (!rows.length) {
         res.status(400).send("Email is not found");
       } else {
@@ -55,6 +58,7 @@ module.exports.login = (req, res) => {
       }
     }
   );
+  console.log(query.sql);
 };
 
 const register = (obj, res) => {

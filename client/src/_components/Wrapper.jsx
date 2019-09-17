@@ -35,7 +35,7 @@ export default class Wrapper extends React.Component {
     return (
       <div className={classes.wrapper}>
         <Menu />
-        <Route path="/" component={EmptyContent} />
+        <Route exact path="/" component={EmptyContent} />
         <Route exact path="/project/:id" component={Content} />
         <button className={classes.btn_logout} onClick={this.logout}>
           Logout

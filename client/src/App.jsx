@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./components/Header/Header";
-import Wrapper from "./components/Wrapper";
+import Header from "./_components/Header/Header";
+import Wrapper from "./_components/Wrapper";
 import { BrowserRouter, Route } from "react-router-dom";
-import Login from "./components/Auth/Login";
-import Sign from "./components/Auth/Sign";
+import Login from "./_components/Auth/Login";
+import Sign from "./_components/Auth/Sign";
 
 const App = () => (
   <BrowserRouter>

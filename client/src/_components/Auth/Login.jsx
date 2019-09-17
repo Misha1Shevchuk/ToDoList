@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, NavLink } from "react-router-dom";
 import classes from "./Auth.module.css";
-import axios from "axios";
+import { login } from "../../_services/AuthRequest";
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -18,19 +18,12 @@ export default class Login extends React.Component {
   login = async event => {
     event.preventDefault();
     if (this.state.email && this.state.password) {
-      await axios
-        .post(`/api/user/login`, {
-          email: this.state.email,
-          password: this.state.password
+      await login(this.state.email, this.state.password)
+        .then(login_response => {
+          console.log(login_response);
+          this.setState({ redirect: true });
         })
-        .then(response => {
-          if (response) {
-            sessionStorage.setItem("userData", response.data);
-            this.setState({ redirect: true });
-          } else {
-            console.log("Login error");
-          }
-        });
+        .catch(err => console.log(err));
     }
   };
 

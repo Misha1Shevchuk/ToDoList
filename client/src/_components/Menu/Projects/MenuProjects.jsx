@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
 import NewProjectForm from "./NewProjectForm";
 import ProjectItem from "./ProjectItem";
 import classes from "../stylesMenu/MenuItems.module.css";
 import { NavLink } from "react-router-dom";
+import { getProjectsList } from "../../../_services/ProjectsRequest";
 
 export default class MenuProjects extends React.Component {
   constructor() {
@@ -32,19 +32,9 @@ export default class MenuProjects extends React.Component {
     }
   };
 
-  componentWillMount = () => this.getList();
-
-  getList = async () => {
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": sessionStorage.getItem("userData")
-      }
-    };
-    await axios.get("/api/projects/", config).then(response => {
-      console.log(response.data);
-      this.makeProjectsList(response.data);
-    });
+  componentWillMount = async () => {
+    let projects = await getProjectsList();
+    this.makeProjectsList(projects);
   };
 
   makeProjectsList = data => {
@@ -57,7 +47,13 @@ export default class MenuProjects extends React.Component {
             key={p.id_project}
             to={`/project/${p.id_project}`}
           >
-            <ProjectItem getList={this.getList} element={p} />
+            <ProjectItem
+              getList={async () => {
+                let projects = await getProjectsList();
+                this.makeProjectsList(projects);
+              }}
+              element={p}
+            />
           </NavLink>
         );
       })
@@ -76,7 +72,10 @@ export default class MenuProjects extends React.Component {
             <ul className={classes.menu_list}>{this.state.list}</ul>
             {this.state.showForm ? (
               <NewProjectForm
-                getList={this.getList}
+                getList={async () => {
+                  let projects = await getProjectsList();
+                  this.makeProjectsList(projects);
+                }}
                 toogleVisibilityForm={this.toogleVisibilityForm}
               />
             ) : (

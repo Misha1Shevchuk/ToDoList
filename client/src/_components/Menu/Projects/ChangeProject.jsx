@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import classes from "../stylesMenu/ChangeItemForm.module.css";
+import { changeProject } from "../../../_services/ProjectsRequest";
 
 export default class ChangeProject extends React.Component {
   constructor(props) {
@@ -17,25 +17,13 @@ export default class ChangeProject extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameProject.trim() !== "") {
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": sessionStorage.getItem("userData")
-        }
-      };
-      await axios
-        .post(
-          `/api/projects/change-project`,
-          {
-            id_project: this.props.element.id_project,
-            project: this.state.newNameProject.replace(/\s+/g, " ").trim()
-          },
-          config
-        )
-        .then(() => {
-          this.props.showChangeProjectForm();
-          this.props.getList();
-        });
+      changeProject(
+        this.props.element.id_project,
+        this.state.newNameProject
+      ).then(() => {
+        this.props.showChangeProjectForm();
+        this.props.getList();
+      });
     } else {
       console.log("Enter new name of project");
     }

@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import classes from "../stylesMenu/NewItemForm.module.css";
+import { newProject } from "../../../_services/ProjectsRequest";
 
 export default class NewProjectForm extends React.Component {
   constructor(props) {
@@ -17,24 +17,10 @@ export default class NewProjectForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.project.trim() !== "") {
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": sessionStorage.getItem("userData")
-        }
-      };
-      await axios
-        .post(
-          `/api/projects/`,
-          {
-            newproject: this.state.project.replace(/\s+/g, " ").trim()
-          },
-          config
-        )
-        .then(() => {
-          this.clearForm();
-          this.props.getList();
-        });
+      newProject(this.state.project).then(() => {
+        this.clearForm();
+        this.props.getList();
+      });
     } else {
       console.log("Please, enter name of project");
     }
