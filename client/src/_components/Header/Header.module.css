@@ -4,11 +4,12 @@ header {
   display: flex;
   align-items: center;
   height: 44px;
-  background-color: #db4c3f;
+  background-color: #169599;
   font-weight: bold;
   user-select: none;
   z-index: 9;
 }
+
 /* Sandwich */
 .sandwich_btn {
   position: relative;

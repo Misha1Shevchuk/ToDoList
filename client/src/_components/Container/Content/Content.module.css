@@ -10,13 +10,15 @@
 .img {
   display: block;
   margin: 100px auto;
-  fill: #ac4e4e;
+  fill: #4ea9ac;
   animation: color1 3s linear;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
 }
 
 @keyframes color1 {
-  70% {fill: black}
+  70% {
+    fill: #3f72cf;
+  }
 }
 
 @media (max-width: 1000px) {

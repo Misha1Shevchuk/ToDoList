@@ -12,3 +12,9 @@
   color: #6d6363;
   text-decoration: line-through;
 }
+
+@media (max-width: 750px) {
+  .work_space {
+    margin: 30px 10px;
+  }
+}

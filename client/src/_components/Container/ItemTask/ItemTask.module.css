@@ -80,7 +80,7 @@
   width: 20px;
   height: 20px;
   border-radius: 90%;
-  border: 1px solid #d4d1d1;
+  border: 1px solid #b8d6d6;
   background: #fff;
   transition: 0.2s;
 }
@@ -94,8 +94,8 @@ input:checked + label:after {
   width: 10px;
   height: 5px;
   border-radius: 1px;
-  border-left: 2px solid #874947;
-  border-bottom: 2px solid #874947;
+  border-left: 2px solid #80aeb9;
+  border-bottom: 2px solid #57b4d8;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -104,8 +104,8 @@ input:checked + label:after {
 }
 
 input:checked + label:before {
-  background-color: #efe8e8;
-  border: 1px solid #ecb9ad;
+  background-color: #e8efed;
+  border: 1px solid #ade5ec;
 }
 
 input:hover + label:before {

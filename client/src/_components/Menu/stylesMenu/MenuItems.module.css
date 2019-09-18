@@ -86,4 +86,8 @@
   * {
     cursor: default;
   }
+
+  .menu_list {
+    padding-left: 0;
+  }
 }

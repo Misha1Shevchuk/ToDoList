@@ -9,7 +9,7 @@
   .menu {
     padding-left: 40px;
     margin: 0;
-    background-color: #fceded;
+    background-color: #ecf1f1;
     height: calc(100vh - 44px);
     border: 1px solid #d3cfcf;
     z-index: 2;

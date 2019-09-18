@@ -10,7 +10,7 @@
   top: 10px;
   right: 10px;
   z-index: 9;
-  background-color: #d66363;
+  background-color: #4ea9ac;
   height: max-content;
   border: 1px solid white;
   padding: 5px 12px;
@@ -25,5 +25,5 @@
 }
 
 .btn_logout:hover {
-  background-color: #e65151;
+  background-color: #3ec2c7;
 }
