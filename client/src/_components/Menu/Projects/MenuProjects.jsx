@@ -11,7 +11,6 @@ export default class MenuProjects extends React.Component {
     this.state = {
       list: [],
       showForm: false,
-      showList: true,
       active: 0
     };
   }
@@ -21,14 +20,6 @@ export default class MenuProjects extends React.Component {
       this.setState({ showForm: false });
     } else {
       this.setState({ showForm: true });
-    }
-  };
-
-  toogleVisibilityList = () => {
-    if (this.state.showList) {
-      this.setState({ showList: false, showForm: false });
-    } else {
-      this.setState({ showList: true });
     }
   };
 
@@ -63,31 +54,29 @@ export default class MenuProjects extends React.Component {
   render() {
     return (
       <div className={classes.items_block}>
-        <div className={classes.head} onClick={this.toogleVisibilityList}>
+        <div className={classes.head} onClick={this.toogleVisibilityForm}>
           <h4>Проекти</h4>
           <button className={classes.head_button_plus}> + </button>
         </div>
-        {this.state.showList ? (
-          <div className={classes.item_content}>
-            <ul className={classes.menu_list}>{this.state.list}</ul>
-            {this.state.showForm ? (
-              <NewProjectForm
-                getList={async () => {
-                  let projects = await getProjectsList();
-                  this.makeProjectsList(projects);
-                }}
-                toogleVisibilityForm={this.toogleVisibilityForm}
-              />
-            ) : (
-              <button
-                className={classes.new_item_button}
-                onClick={this.toogleVisibilityForm}
-              >
-                Новий проект
-              </button>
-            )}
-          </div>
-        ) : null}
+        <div className={classes.item_content}>
+          <ul className={classes.menu_list}>{this.state.list}</ul>
+          {this.state.showForm ? (
+            <NewProjectForm
+              getList={async () => {
+                let projects = await getProjectsList();
+                this.makeProjectsList(projects);
+              }}
+              toogleVisibilityForm={this.toogleVisibilityForm}
+            />
+          ) : (
+            <button
+              className={classes.new_item_button}
+              onClick={this.toogleVisibilityForm}
+            >
+              Новий проект
+            </button>
+          )}
+        </div>
       </div>
     );
   }
