@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const verify = require("../controllers/verifyToken");
-const pr = require("../controllers/projects");
+const verify = require("../services/verifyToken");
+const projectController = require("../controllers/projectController");
 
-router.get("/", verify, pr.getProjectsList);
-router.post("/", verify, pr.newProject);
-router.delete("/:id", verify, pr.removeProject);
-router.post("/change-project", verify, pr.updateProject);
+router.get("/", verify, projectController.getProjectsList);
+router.post("/", verify, projectController.newProject);
+router.delete("/:id", verify, projectController.removeProject);
+router.post("/change-project", verify, projectController.updateProject);
 
 module.exports = router;
