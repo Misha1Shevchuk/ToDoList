@@ -41,7 +41,7 @@ module.exports = {
             if (!validPassword) return res.status(400).send("Invalid password");
             // Create and assign a token
             const token = jwt.sign(
-                {_id: user.id_user},
+                {_id: user._id},
                 process.env.TOKEN_SECRET
             );
             res.header("auth-token", token).send(token);
