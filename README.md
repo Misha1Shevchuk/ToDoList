@@ -1,3 +1,3 @@
 # ToDoList
 ToDoList
-В розробці. 
+Under development. Web site with Authentification.
