@@ -18,7 +18,6 @@ export default class Login extends React.Component {
 
   sign = async event => {
     event.preventDefault();
-    console.log(this.state);
     if (this.state.email && this.state.password) {
       let sign_status = await sign(
         this.state.name,

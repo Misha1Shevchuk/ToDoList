@@ -1,4 +1,4 @@
-export const proxy = "https://blooming-chamber-22236.herokuapp.com";
+export const proxy = "https://todolist-ua.herokuapp.com";
 export const config = {
   headers: {
     "Content-Type": "application/json",
