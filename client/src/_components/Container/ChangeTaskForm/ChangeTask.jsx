@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
+import {config, proxy} from "../../../_services/configs";
 import classes from "../../Menu/stylesMenu/ChangeItemForm.module.css";
 
 export default class ChangeTask extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newNameTask: this.props.element.task
+      newNameTask: this.props.element.name
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,17 +18,11 @@ export default class ChangeTask extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.newNameTask !== "") {
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("userData")
-        }
-      };
       await axios
         .post(
-          `/api/tasks/change-task`,
+          `${proxy}/api/tasks/change-task`,
           {
-            id_task: this.props.element.id_task,
+            id_task: this.props.element._id,
             task: this.state.newNameTask
           },
           config

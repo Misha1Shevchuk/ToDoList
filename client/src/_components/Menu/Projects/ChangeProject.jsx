@@ -6,7 +6,7 @@ export default class ChangeProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newNameProject: this.props.element.project
+      newNameProject: this.props.element.name
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,7 @@ export default class ChangeProject extends React.Component {
     event.preventDefault();
     if (this.state.newNameProject.trim() !== "") {
       changeProject(
-        this.props.element.id_project,
+        this.props.element._id,
         this.state.newNameProject
       ).then(() => {
         this.props.showChangeProjectForm();

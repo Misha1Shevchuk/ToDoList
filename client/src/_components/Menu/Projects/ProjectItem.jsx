@@ -16,7 +16,7 @@ export default class ProjectItem extends React.Component {
 
   removeProject = async event => {
     event.preventDefault();
-    removeProject(this.props.element.id_project).then(() => {
+    removeProject(this.props.element._id).then(() => {
       this.props.getList();
     });
   };
@@ -42,7 +42,7 @@ export default class ProjectItem extends React.Component {
           <div className={classes.item}>
             <span className={classes.item_name}>
               {" "}
-              {this.props.element.project}
+              {this.props.element.name}
             </span>
             <div className={classes.buttons_block}>
               <button

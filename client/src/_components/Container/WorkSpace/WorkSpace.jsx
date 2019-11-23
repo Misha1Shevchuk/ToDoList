@@ -32,11 +32,11 @@ export default class WorkSpace extends React.Component {
   makeListFinishedTasks = data => {
     this.setState({
       listFinishedTasks: data.map(task => {
-        if (task.is_completed) {
+        if (task.completed) {
           return (
             <ItemTask
               getList={this.getList}
-              key={task.id_task}
+              key={task._id}
               element={task}
             />
           );
@@ -50,11 +50,11 @@ export default class WorkSpace extends React.Component {
   makeListUnfinishedTasks = data => {
     this.setState({
       listUnfinishedTasks: data.map(task => {
-        if (!task.is_completed) {
+        if (!task.completed) {
           return (
             <ItemTask
               getList={this.getList}
-              key={task.id_task}
+              key={task._id}
               element={task}
             />
           );

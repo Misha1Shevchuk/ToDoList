@@ -4,7 +4,8 @@ const Task = require('../models/Task');
 
 module.exports = {
     async getTasksList(req, res) {
-        const tasks = await Task.find({project: req.params.idProject});
+        const tasks = await Task.find({project: req.params.idProject})
+            .catch(err=>res.JSON(err));
         res.send(tasks)
     },
 

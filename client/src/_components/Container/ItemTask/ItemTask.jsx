@@ -7,27 +7,27 @@ import ChangeImg from "../../svg/ChangeImg";
 import DeleteImg from "../../svg/DeleteImg";
 
 export default class ItemTask extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showChangeTaskForm: false,
+      isCompleted: this.props.element.completed
+    };
+  }
+
   markCompleted = async event => {
     event.preventDefault();
     markTaskCompleted(
-      this.props.element.id_task,
-      !this.props.element.is_completed
+        this.props.element._id,
+        !this.props.element.completed
     ).then(() => {
       this.props.getList();
     });
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showChangeTaskForm: false,
-      isCompleted: this.props.element.is_completed
-    };
-  }
-
   removeTask = async event => {
     event.preventDefault();
-    removeTask(this.props.element.id_task).then(() => {
+    removeTask(this.props.element._id).then(() => {
       this.props.getList();
     });
   };
@@ -55,13 +55,12 @@ export default class ItemTask extends React.Component {
               onClick={this.markCompleted}
               defaultChecked={this.state.isCompleted}
               type="checkbox"
-              id={`checkbox_${this.props.element.id_task}`}
+              id={`checkbox_${this.props.element._id}`}
               className={classes.checkbox}
             />
-            <label htmlFor={`checkbox_${this.props.element.id_task}`}></label>
+            <label htmlFor={`checkbox_${this.props.element._id}`}></label>
             <span className={classes.item_name}>
-              {" "}
-              {this.props.element.task}
+              {this.props.element.name}
             </span>
             <div className={classes.buttons_block}>
               <button
