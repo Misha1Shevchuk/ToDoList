@@ -10,7 +10,7 @@ module.exports = {
     },
 
     async newTask(req, res) {
-        if (!req.body) return res.sendStatus(400);
+        if (!req.body.newtask) return res.sendStatus(400);
         const task = await new Task({
             name: req.body.newtask,
             project: req.body.id_project,

@@ -5,13 +5,12 @@ const Task = require('../models/Task');
 
 module.exports = {
     async getProjectsList(req, res) {
-        let projects = await Project.find({user: req.user._id})
-            .catch(err=>res.JSON(err));
+        let projects = await Project.find({user: req.user._id});
         return res.send(projects);
     },
 
     async newProject(req, res) {
-        if (!req.body) return res.sendStatus(400);
+        if (!req.body.newproject) return res.sendStatus(400);
         const project = new Project({
             name: req.body.newproject,
             user: req.user._id,
