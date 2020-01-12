@@ -26,19 +26,19 @@ module.exports = {
 
         // Validate data before login user
         const {error} = loginValidation(req.body);
-        if (error) return res.status(400).send(error.details[0].message);
+        if (error) return res.status(403).send(error.details[0].message);
 
         //   Checking if the user is already in the database
         let user = await User.findOne({email: req.body.email});
         if (!user) {
-            res.status(400).send("Email is not found");
+            res.status(403).send("Email is not found");
         } else {
             // Check password
             const validPassword = await bcrypt.compare(
                 req.body.password,
                 user.password
             );
-            if (!validPassword) return res.status(400).send("Invalid password");
+            if (!validPassword) return res.status(403).send("Invalid password");
             // Create and assign a token
             const token = jwt.sign(
                 {_id: user._id},
